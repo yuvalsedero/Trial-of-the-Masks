@@ -17,6 +17,13 @@ public class BearBossHealth : MonoBehaviour, IDamageable
     public System.Action OnPhaseTwo;
     bool phaseTwoTriggered = false;
 
+    [Header("Hit Sounds")]
+public AudioClip[] hitSounds;
+private AudioSource audioSource;
+
+[Header("Death Sound")]
+public AudioClip deathSound;
+
     void Awake()
     {
         currentHealth = maxHealth;
@@ -24,6 +31,10 @@ public class BearBossHealth : MonoBehaviour, IDamageable
 
         if (sr != null)
             originalColor = sr.color;
+
+            audioSource = GetComponent<AudioSource>();
+if (audioSource == null)
+    audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void TakeDamage(int amount, Vector2 hitDir)
@@ -31,6 +42,11 @@ public class BearBossHealth : MonoBehaviour, IDamageable
         currentHealth -= amount;
 
         Flash();
+        if (hitSounds != null && hitSounds.Length > 0)
+{
+    AudioClip clip = hitSounds[Random.Range(0, hitSounds.Length)];
+    audioSource.PlayOneShot(clip);
+}
 
         if (!phaseTwoTriggered && currentHealth <= maxHealth / 2)
         {
@@ -66,8 +82,19 @@ public class BearBossHealth : MonoBehaviour, IDamageable
     }
 
     void Die()
+{
+    Debug.Log("Boss defeated");
+
+    // Play death sound independently
+    if (deathSound != null)
     {
-        Debug.Log("Boss defeated");
-        Destroy(gameObject);
+        GameObject tempAudio = new GameObject("BossDeathAudio");
+        AudioSource aSource = tempAudio.AddComponent<AudioSource>();
+        aSource.clip = deathSound;
+        aSource.Play();
+        Destroy(tempAudio, deathSound.length); // cleanup after finished
     }
+
+    Destroy(gameObject);
+}
 }
