@@ -6,9 +6,9 @@ public static class WorldMap
     public static readonly Dictionary<Vector2Int, RoomInfo> Rooms =
         new Dictionary<Vector2Int, RoomInfo>
         {
-            // Spawn / Hub
             { new Vector2Int(0, 0), new RoomInfo(RoomType.Spawn) },
-            { new Vector2Int(0, 1), new RoomInfo(1, 0) },
+
+            { new Vector2Int(5, 5), new RoomInfo(1, 0) },
             { new Vector2Int(1, 1), new RoomInfo(1, 0) },
             { new Vector2Int(0, 2), new RoomInfo(2, 0) },
 
@@ -31,15 +31,11 @@ public static class WorldMap
             { new Vector2Int(3, 6), new RoomInfo(3, 0) },
             { new Vector2Int(3, 5), new RoomInfo(3, 1) },
 
-            { new Vector2Int(3, 4),  new RoomInfo(RoomType.Tribe, TribeType.TribeC) },
+            { new Vector2Int(3, 4), new RoomInfo(RoomType.Tribe, TribeType.TribeC) },
 
             { new Vector2Int(4, 4), new RoomInfo(2, 2) },
             { new Vector2Int(5, 4), new RoomInfo(3, 2) },
 
-            { new Vector2Int(5, 5), new RoomInfo(RoomType.Boss) },
-      
-           
-
-            // Boss
+            { new Vector2Int(0, 1), new RoomInfo(RoomType.Boss) },
         };
 }

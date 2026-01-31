@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TribeElementDialog
   m_EditorClassIdentifier: Assembly-CSharp::TribeDialogData
   tribeType: 0
-  meatRequired: 0
+  meatRequired: 10
   genericLines:
   - Greeting Young one.
   - You seek the power of nature...

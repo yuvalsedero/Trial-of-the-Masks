@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TribeWeaponDialog
   m_EditorClassIdentifier: Assembly-CSharp::TribeDialogData
   tribeType: 1
-  meatRequired: 0
+  meatRequired: 7
   genericLines:
   - So the rumor was true..
   - The great hunting powers Don't come easily,

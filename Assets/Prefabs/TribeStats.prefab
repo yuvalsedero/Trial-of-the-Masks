@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3677954909114849560, guid: d4a539344f0f583489760d47399b8427, type: 3}
       propertyPath: m_Name
-      value: TribeC
+      value: TribeStats
       objectReference: {fileID: 0}
     - target: {fileID: 3755906231650864723, guid: d4a539344f0f583489760d47399b8427, type: 3}
       propertyPath: m_Sprite
@@ -63,6 +63,14 @@ PrefabInstance:
     - target: {fileID: 4861578310996972735, guid: d4a539344f0f583489760d47399b8427, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300361716824009207, guid: d4a539344f0f583489760d47399b8427, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300361716824009207, guid: d4a539344f0f583489760d47399b8427, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.093
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

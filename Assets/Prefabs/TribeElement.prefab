@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6300361716824009207, guid: d4a539344f0f583489760d47399b8427, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.88
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -71,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3677954909114849560, guid: d4a539344f0f583489760d47399b8427, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4660225671447155938}
+    - targetCorrespondingSourceObject: {fileID: 3677954909114849560, guid: d4a539344f0f583489760d47399b8427, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 522507691197166721}
   m_SourcePrefab: {fileID: 100100000, guid: d4a539344f0f583489760d47399b8427, type: 3}
 --- !u!1 &4874888689104819646 stripped
 GameObject:
@@ -99,3 +106,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &522507691197166721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4874888689104819646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4079d19afe24c864bbc283c70bd3d819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
+  sortPoint: {fileID: 0}
+  offset: 0
+  multiplier: 100

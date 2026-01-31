@@ -12,18 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a432d6f9de905744995083d9de5d8a98, type: 3}
   m_Name: GuideChiefDialog
   m_EditorClassIdentifier: Assembly-CSharp::TribeDialogData
-  tribeType: 1
+  tribeType: 3
   meatRequired: 0
   genericLines:
-  - So the rumor was true..
-  - The great hunting powers Don't come easily,
-  - they are only given to the best hunters.
-  - If you Prove youself you we will teach you the way of the Blowdart
-  enoughLines:
-  - You have enough meat for us all!
-  - Thank you, Little one.
-  notEnoughLines:
-  - You dont have enough meat to feed us all, Infant.
-  - We need more pieces of meat to perform the CEREMONY
-  completedLines:
-  - Go forth and retrieve the remaining pieces of the MASK.
+  - Your eyes have turned yellow, you have been chosen to fight for our community's
+    survival.
+  - Like times before, a great horrible beast had come from outside the forest to
+    try and destroy all we know.
+  - Like times before a yellow eyed hero has been chosen.
+  - Go to the three core groups of our community and do the trials of the masks.
+    Collect the powerful mask parts and kill this BEAST OF DOOM.
+  enoughLines: []
+  notEnoughLines: []
+  completedLines: []
