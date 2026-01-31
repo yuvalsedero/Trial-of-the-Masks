@@ -488,7 +488,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4fc179183a25a204cae1ec14665764cc, type: 3}
   - {fileID: 21300000, guid: e400da67a5f493a46a253edaff03f9e4, type: 3}
   hitSounds:
-  - {fileID: 8300000, guid: d9c77cda5f136e64a94d2d608558f6db, type: 3}
+  - {fileID: 8300000, guid: af0ab1a396ef76040bb2b15cb8035545, type: 3}
   - {fileID: 8300000, guid: b893b86a2474a5148858b852ee924105, type: 3}
   deathSounds:
   - {fileID: 8300000, guid: 2f8b758491c4b244182caea92143fba9, type: 3}

@@ -179,6 +179,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BearBossThrow
   stonePrefab: {fileID: 3317707522779121286, guid: e92dfcc10c9198747b011b82ad8386fb, type: 3}
   throwPoint: {fileID: 6967435190199499379}
+  throwSounds:
+  - {fileID: 8300000, guid: 39d80c3480637264f9213ccf00d79a3c, type: 3}
+  - {fileID: 8300000, guid: 362588914724440448c091f956cb8251, type: 3}
+  - {fileID: 8300000, guid: 209b3c58367692543abfa102070d8b4c, type: 3}
 --- !u!114 &1391579286875394468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +233,14 @@ MonoBehaviour:
   maxHealth: 100
   flashTime: 0.1
   hitColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
+  hitSounds:
+  - {fileID: 8300000, guid: bfa53cfdb4024e446ae823fa286ab361, type: 3}
+  - {fileID: 8300000, guid: 375003785c6d43447baee2b2b572b28e, type: 3}
+  - {fileID: 8300000, guid: 5a31113f7b5a2374283b3465110a740e, type: 3}
+  - {fileID: 8300000, guid: c0ffbac36e846a940ac2bf03cef36fb2, type: 3}
+  - {fileID: 8300000, guid: cd35b3d5c51d3b343a26a196d341b7d2, type: 3}
+  - {fileID: 8300000, guid: 3741f81a56a6d414187281338f04af7d, type: 3}
+  deathSound: {fileID: 8300000, guid: 123a9f218bb7a0e4ea8db2703a66a9df, type: 3}
 --- !u!114 &2176803446136880587
 MonoBehaviour:
   m_ObjectHideFlags: 0

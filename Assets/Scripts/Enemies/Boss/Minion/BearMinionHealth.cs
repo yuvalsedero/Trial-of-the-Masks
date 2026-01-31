@@ -16,6 +16,10 @@ public class BearMinionHealth : MonoBehaviour, IDamageable
 
     public System.Action OnDeath;
 
+    public AudioClip[] hitSounds; // assign as many as you want in Inspector
+private AudioSource audioSource;
+public AudioClip deathSound;
+
     void Awake()
     {
         currentHealth = maxHealth;
@@ -23,6 +27,10 @@ public class BearMinionHealth : MonoBehaviour, IDamageable
 
         if (sr != null)
             originalColor = sr.color;
+
+            audioSource = GetComponent<AudioSource>();
+if (audioSource == null)
+    audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void TakeDamage(int amount, Vector2 hitDir)
@@ -32,6 +40,12 @@ public class BearMinionHealth : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
             Die();
+
+            if (hitSounds != null && hitSounds.Length > 0)
+{
+    AudioClip clip = hitSounds[Random.Range(0, hitSounds.Length)];
+    audioSource.PlayOneShot(clip);
+}
     }
 
     void Flash()
@@ -53,10 +67,21 @@ public class BearMinionHealth : MonoBehaviour, IDamageable
     }
 
     void Die()
+{
+    OnDeath?.Invoke();
+
+    // Play death sound on a temporary object so it survives the minion being destroyed
+    if (deathSound != null)
     {
-        OnDeath?.Invoke();
-        Destroy(gameObject);
+        GameObject tempAudio = new GameObject("MinionDeathAudio");
+        AudioSource aSource = tempAudio.AddComponent<AudioSource>();
+        aSource.clip = deathSound;
+        aSource.Play();
+        Destroy(tempAudio, deathSound.length); // destroy after sound finishes
     }
+
+    Destroy(gameObject);
+}
 
     public Transform GetTransform()
     {
