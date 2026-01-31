@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public class BearBossHealth : MonoBehaviour, IDamageable
 {
     public int maxHealth = 40;
@@ -18,11 +18,11 @@ public class BearBossHealth : MonoBehaviour, IDamageable
     bool phaseTwoTriggered = false;
 
     [Header("Hit Sounds")]
-public AudioClip[] hitSounds;
-private AudioSource audioSource;
+    public AudioClip[] hitSounds;
+    private AudioSource audioSource;
 
-[Header("Death Sound")]
-public AudioClip deathSound;
+    [Header("Death Sound")]
+    public AudioClip deathSound;
 
     void Awake()
     {
@@ -32,9 +32,9 @@ public AudioClip deathSound;
         if (sr != null)
             originalColor = sr.color;
 
-            audioSource = GetComponent<AudioSource>();
-if (audioSource == null)
-    audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void TakeDamage(int amount, Vector2 hitDir)
@@ -43,10 +43,10 @@ if (audioSource == null)
 
         Flash();
         if (hitSounds != null && hitSounds.Length > 0)
-{
-    AudioClip clip = hitSounds[Random.Range(0, hitSounds.Length)];
-    audioSource.PlayOneShot(clip);
-}
+        {
+            AudioClip clip = hitSounds[Random.Range(0, hitSounds.Length)];
+            audioSource.PlayOneShot(clip);
+        }
 
         if (!phaseTwoTriggered && currentHealth <= maxHealth / 2)
         {
@@ -82,19 +82,22 @@ if (audioSource == null)
     }
 
     void Die()
-{
-    Debug.Log("Boss defeated");
-
-    // Play death sound independently
-    if (deathSound != null)
     {
-        GameObject tempAudio = new GameObject("BossDeathAudio");
-        AudioSource aSource = tempAudio.AddComponent<AudioSource>();
-        aSource.clip = deathSound;
-        aSource.Play();
-        Destroy(tempAudio, deathSound.length); // cleanup after finished
-    }
+        Debug.Log("Boss defeated");
 
-    Destroy(gameObject);
-}
+        // Play death sound independently
+        if (deathSound != null)
+        {
+            GameObject tempAudio = new GameObject("BossDeathAudio");
+            AudioSource aSource = tempAudio.AddComponent<AudioSource>();
+            aSource.clip = deathSound;
+            aSource.Play();
+            Destroy(tempAudio, deathSound.length); // cleanup after finished
+        }
+        ScreenFade.Instance.FadeOut(() =>
+           {
+               SceneManager.LoadScene("EndGameScene");
+           });
+        Destroy(gameObject);
+    }
 }

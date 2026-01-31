@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MaskPedastal_HP
       objectReference: {fileID: 0}
+    - target: {fileID: 5389194130095011471, guid: aa7863b16accaf948a6872de9ebf9615, type: 3}
+      propertyPath: m_text
+      value: HP upA
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

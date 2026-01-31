@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3960885822329668002, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: m_text
+      value: Poison
+      objectReference: {fileID: 0}
     - target: {fileID: 4583417893679375542, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
       propertyPath: m_Name
       value: MaskPedestal_Poison
