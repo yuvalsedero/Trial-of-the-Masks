@@ -154,8 +154,8 @@ public class MiniMapManager : MonoBehaviour
             RoomType.Enemy => Color.red,
             RoomType.Tribe => info.tribe switch
             {
-                TribeType.TribeA => Color.green,
-                TribeType.TribeB => new Color(0.6f, 0f, 0.8f),
+                TribeType.TribeA => Color.blue,
+                TribeType.TribeB => Color.blue,
                 TribeType.TribeC => Color.blue,
                 _ => Color.white
             },

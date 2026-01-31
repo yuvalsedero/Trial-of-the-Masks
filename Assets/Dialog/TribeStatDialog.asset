@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TribeStatDialog
   m_EditorClassIdentifier: Assembly-CSharp::TribeDialogData
   tribeType: 2
-  meatRequired: 0
+  meatRequired: 4
   genericLines:
   - So you wish to empower your body?
   - first show us how powerful your body already is!

@@ -3,11 +3,10 @@ public class RoomInfo
     public RoomType roomType;
     public TribeType tribe;
 
-    // 👇 NEW: enemy composition
     public int boarCount;
     public int monkeyCount;
 
-    // Default (non-enemy rooms)
+    // Non-enemy rooms
     public RoomInfo(RoomType type, TribeType tribeType = TribeType.TribeA)
     {
         roomType = type;
@@ -16,7 +15,7 @@ public class RoomInfo
         monkeyCount = 0;
     }
 
-    // 👇 Enemy room constructor
+    // Enemy rooms (KEEP YOUR NUMBERS)
     public RoomInfo(int boars, int monkeys)
     {
         roomType = RoomType.Enemy;

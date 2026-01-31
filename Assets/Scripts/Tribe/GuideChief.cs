@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GuideChief : MonoBehaviour
+public class GuideChief : MonoBehaviour, IInteractable
 {
     public TribeDialogData dialogData;
 

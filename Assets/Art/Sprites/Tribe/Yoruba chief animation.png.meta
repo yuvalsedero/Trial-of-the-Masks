@@ -1,0 +1,309 @@
+fileFormatVersion: 2
+guid: d3f7e668e774bd149a85d1c28e23b8e8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5038334721059969323
+    second: Yoruba chief animation_0
+  - first:
+      213: -7253099521526221018
+    second: Yoruba chief animation_1
+  - first:
+      213: 8304466644938907013
+    second: Yoruba chief animation_2
+  - first:
+      213: 5859940643262351783
+    second: Yoruba chief animation_3
+  - first:
+      213: -6421266729037787367
+    second: Yoruba chief animation_4
+  - first:
+      213: -1920243802171188051
+    second: Yoruba chief animation_5
+  - first:
+      213: -9196675408365654054
+    second: Yoruba chief animation_6
+  - first:
+      213: -7096999703360964319
+    second: Yoruba chief animation_7
+  - first:
+      213: 6775700718582501165
+    second: Yoruba chief animation_8
+  - first:
+      213: 1831241624362976958
+    second: Yoruba chief animation_9
+  - first:
+      213: -8038597514469586850
+    second: Yoruba chief animation_10
+  - first:
+      213: 6772954421179816270
+    second: Yoruba chief animation_11
+  - first:
+      213: 7575182587378301974
+    second: Yoruba chief animation_12
+  - first:
+      213: 2560805015794892780
+    second: Yoruba chief animation_13
+  - first:
+      213: -5336600256880663102
+    second: Yoruba chief animation_14
+  - first:
+      213: 1923298862126151354
+    second: Yoruba chief animation_15
+  - first:
+      213: 8075768336861296674
+    second: Yoruba chief animation_16
+  - first:
+      213: -3473042636510568552
+    second: Yoruba chief animation_17
+  - first:
+      213: 6574756994007436829
+    second: Yoruba chief animation_18
+  - first:
+      213: -1282712079549146266
+    second: Yoruba chief animation_19
+  - first:
+      213: 4715349149455430665
+    second: Yoruba chief animation_20
+  - first:
+      213: -9121604109082488687
+    second: Yoruba chief animation_21
+  - first:
+      213: -5935154855442145807
+    second: Yoruba chief animation_22
+  - first:
+      213: -9129416382491345948
+    second: Yoruba chief animation_23
+  - first:
+      213: -6927359825844664955
+    second: Yoruba chief animation_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 150
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Yoruba chief animation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 537
+        height: 1640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d624b3f34d341ab0800000000000000
+      internalID: -5038334721059969323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoruba chief animation_1
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 0
+        width: 549
+        height: 1640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 627bfdae960d75b90800000000000000
+      internalID: -7253099521526221018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoruba chief animation_2
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 0
+        width: 547
+        height: 1640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58dd9a42a646f3370800000000000000
+      internalID: 8304466644938907013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoruba chief animation_3
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 0
+        width: 541
+        height: 1640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a9c68eb7f0b25150800000000000000
+      internalID: 5859940643262351783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoruba chief animation_4
+      rect:
+        serializedVersion: 2
+        x: 2244
+        y: 0
+        width: 581
+        height: 1632
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91f0ba76ee313e6a0800000000000000
+      internalID: -6421266729037787367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9486b3febea5a95489e42e0afc282ddf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":565.0,"y":1640.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Yoruba chief animation_0: -5038334721059969323
+      Yoruba chief animation_1: -7253099521526221018
+      Yoruba chief animation_2: 8304466644938907013
+      Yoruba chief animation_3: 5859940643262351783
+      Yoruba chief animation_4: -6421266729037787367
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

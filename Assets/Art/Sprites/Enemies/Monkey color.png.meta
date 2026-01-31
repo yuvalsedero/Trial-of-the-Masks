@@ -1,0 +1,374 @@
+fileFormatVersion: 2
+guid: 9a9f8245cbc422049a9e831e4fff474a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5925103364034200835
+    second: Monkey color_0
+  - first:
+      213: 2115066243767360011
+    second: Monkey color_1
+  - first:
+      213: -2173805266872734809
+    second: Monkey color_2
+  - first:
+      213: -2093315769085385467
+    second: Monkey color_3
+  - first:
+      213: -7007154598683500500
+    second: Monkey color_4
+  - first:
+      213: -4757638458387860434
+    second: Monkey color_5
+  - first:
+      213: -1153353567688658455
+    second: Monkey color_6
+  - first:
+      213: 6830987248164689370
+    second: Monkey color_7
+  - first:
+      213: -5482739979784126539
+    second: Monkey color_8
+  - first:
+      213: 8110297300661489227
+    second: Monkey color_9
+  - first:
+      213: 2526423338697182434
+    second: Monkey color_10
+  - first:
+      213: 1000260328338652303
+    second: Monkey color_11
+  - first:
+      213: -7186453688572559060
+    second: Monkey color_12
+  - first:
+      213: 516240623417718968
+    second: Monkey color_13
+  - first:
+      213: -1355436491733027147
+    second: Monkey color_14
+  - first:
+      213: -8174566019045980578
+    second: Monkey color_15
+  - first:
+      213: -453342631540365390
+    second: Monkey color_16
+  - first:
+      213: 1467023311944913350
+    second: Monkey color_17
+  - first:
+      213: 7076577158589358217
+    second: Monkey color_18
+  - first:
+      213: -2889873623969412192
+    second: Monkey color_19
+  - first:
+      213: 258472184481647210
+    second: Monkey color_20
+  - first:
+      213: 6725674025385031023
+    second: Monkey color_21
+  - first:
+      213: 8133995433923316938
+    second: Monkey color_22
+  - first:
+      213: -3908144686044890769
+    second: Monkey color_23
+  - first:
+      213: -3987440766342686506
+    second: Monkey color_24
+  - first:
+      213: 6967415718674542021
+    second: Monkey color_25
+  - first:
+      213: 3583750415946319345
+    second: Monkey color_26
+  - first:
+      213: 4420187708933484462
+    second: Monkey color_27
+  - first:
+      213: -8986163135537439071
+    second: Monkey color_28
+  - first:
+      213: -5428570146557824085
+    second: Monkey color_29
+  - first:
+      213: -9214036786486434220
+    second: Monkey color_30
+  - first:
+      213: -8874581414859246196
+    second: Monkey color_31
+  - first:
+      213: 6244938458680866214
+    second: Monkey color_32
+  - first:
+      213: -289152833535854429
+    second: Monkey color_33
+  - first:
+      213: -379791735546516840
+    second: Monkey color_34
+  - first:
+      213: -2909224826216011048
+    second: Monkey color_35
+  - first:
+      213: 4969377842333950012
+    second: Monkey color_36
+  - first:
+      213: 4162635677567307980
+    second: Monkey color_37
+  - first:
+      213: -3794864690074161218
+    second: Monkey color_38
+  - first:
+      213: 8161298163695284177
+    second: Monkey color_39
+  - first:
+      213: -9187146827464667190
+    second: Monkey color_40
+  - first:
+      213: 1294744089608630632
+    second: Monkey color_41
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 300
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Monkey color_1
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 813
+        width: 354
+        height: 741
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0a5c28ea893a5d10800000000000000
+      internalID: 2115066243767360011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monkey color_2
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 1267
+        width: 129
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ab6d2980a715d1e0800000000000000
+      internalID: -2173805266872734809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monkey color_4
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 861
+        width: 591
+        height: 511
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c20a93b940691ce90800000000000000
+      internalID: -7007154598683500500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monkey color_5
+      rect:
+        serializedVersion: 2
+        x: 1564
+        y: 860
+        width: 361
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e24fd06770979fdb0800000000000000
+      internalID: -4757638458387860434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 65510fce8c92e2947a2dfef280e1c750
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Monkey color_0: 5925103364034200835
+      Monkey color_1: 2115066243767360011
+      Monkey color_10: 2526423338697182434
+      Monkey color_11: 1000260328338652303
+      Monkey color_12: -7186453688572559060
+      Monkey color_13: 516240623417718968
+      Monkey color_14: -1355436491733027147
+      Monkey color_15: -8174566019045980578
+      Monkey color_16: -453342631540365390
+      Monkey color_17: 1467023311944913350
+      Monkey color_18: 7076577158589358217
+      Monkey color_19: -2889873623969412192
+      Monkey color_2: -2173805266872734809
+      Monkey color_20: 258472184481647210
+      Monkey color_21: 6725674025385031023
+      Monkey color_22: 8133995433923316938
+      Monkey color_23: -3908144686044890769
+      Monkey color_24: -3987440766342686506
+      Monkey color_25: 6967415718674542021
+      Monkey color_26: 3583750415946319345
+      Monkey color_27: 4420187708933484462
+      Monkey color_28: -8986163135537439071
+      Monkey color_29: -5428570146557824085
+      Monkey color_3: -2093315769085385467
+      Monkey color_30: -9214036786486434220
+      Monkey color_31: -8874581414859246196
+      Monkey color_32: 6244938458680866214
+      Monkey color_33: -289152833535854429
+      Monkey color_34: -379791735546516840
+      Monkey color_35: -2909224826216011048
+      Monkey color_36: 4969377842333950012
+      Monkey color_37: 4162635677567307980
+      Monkey color_38: -3794864690074161218
+      Monkey color_39: 8161298163695284177
+      Monkey color_4: -7007154598683500500
+      Monkey color_40: -9187146827464667190
+      Monkey color_41: 1294744089608630632
+      Monkey color_42: -1121791031
+      Monkey color_5: -4757638458387860434
+      Monkey color_6: -1153353567688658455
+      Monkey color_7: 6830987248164689370
+      Monkey color_8: -5482739979784126539
+      Monkey color_9: 8110297300661489227
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

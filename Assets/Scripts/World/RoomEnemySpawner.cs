@@ -25,44 +25,49 @@ public class RoomEnemySpawner : MonoBehaviour
         if (isCleared)
             return;
 
-        if (!WorldMap.Rooms.ContainsKey(roomIndex))
+        if (!WorldMap.Rooms.TryGetValue(roomIndex, out RoomInfo info))
             return;
 
-        RoomInfo info = WorldMap.Rooms[roomIndex];
         if (info.roomType != RoomType.Enemy)
             return;
 
-        aliveEnemies = info.boarCount + info.monkeyCount;
+        // ✅ USE YOUR MAP NUMBERS DIRECTLY
+        int boars = info.boarCount;
+        int monkeys = info.monkeyCount;
 
+        aliveEnemies = boars + monkeys;
         if (aliveEnemies <= 0)
             return;
 
         RoomManager.Instance.SetDoorsLocked(roomIndex, true);
 
-        // Spawn boars
-        for (int i = 0; i < info.boarCount; i++)
-        {
+        for (int i = 0; i < boars; i++)
             SpawnEnemy(boarPrefab);
-        }
 
-        // Spawn monkeys
-        for (int i = 0; i < info.monkeyCount; i++)
-        {
+        for (int i = 0; i < monkeys; i++)
             SpawnEnemy(monkeyPrefab);
-        }
     }
 
     void SpawnEnemy(GameObject prefab)
     {
+        if (prefab == null)
+        {
+            Debug.LogError("[RoomEnemySpawner] Missing enemy prefab!");
+            return;
+        }
+
         GameObject enemy = Instantiate(
             prefab,
             transform.position + (Vector3)Random.insideUnitCircle * spawnRadius,
             Quaternion.identity
         );
 
+        // ✅ Works for both boars + monkeys if they share BoarHealth (they currently do in your project)
         BoarHealth health = enemy.GetComponent<BoarHealth>();
         if (health != null)
             health.OnDeath += OnEnemyDied;
+        else
+            Debug.LogWarning("[RoomEnemySpawner] Spawned enemy has no BoarHealth, doors may never unlock.");
     }
 
     void OnEnemyDied()
