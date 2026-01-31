@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System;
 public class MaskManager : MonoBehaviour
 {
     public static MaskManager Instance;
@@ -7,7 +7,10 @@ public class MaskManager : MonoBehaviour
     public MaskEffectType ElementalEffect = MaskEffectType.None;
     public MaskEffectType DartEffect = MaskEffectType.None;
     public MaskEffectType StatEffect = MaskEffectType.None;
+    public int maskPiecesCollected { get; private set; } = 0;
+    public const int MaxMaskPieces = 3;
 
+    public event Action<int> OnMaskPieceCollected;
     void Awake()
     {
         if (Instance != null)
@@ -58,6 +61,15 @@ public class MaskManager : MonoBehaviour
                 player.GetComponent<PlayerMovement>()?.IncreaseSpeed(1.5f);
                 break;
         }
+    }
+    public void CollectMaskPiece()
+    {
+        if (maskPiecesCollected >= MaxMaskPieces)
+            return;
+
+        maskPiecesCollected++;
+
+        OnMaskPieceCollected?.Invoke(maskPiecesCollected);
     }
 
 }

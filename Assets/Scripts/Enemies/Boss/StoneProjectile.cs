@@ -6,6 +6,9 @@ public class StoneProjectile : MonoBehaviour
     public float speed = 7f;
     public float lifeTime = 5f;
 
+    [Header("Visual")]
+    public float spinSpeed = 360f; // degrees per second
+
     Rigidbody2D rb;
 
     void Awake()
@@ -17,12 +20,16 @@ public class StoneProjectile : MonoBehaviour
     public void Launch(Vector2 direction)
     {
         rb.linearVelocity = direction.normalized * speed;
-        Rotate(direction);
+    }
+
+    void Update()
+    {
+        // spin constantly
+        transform.Rotate(0f, 0f, spinSpeed * Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // PLAYER
         if (other.CompareTag("Player"))
         {
             PlayerHealth health = other.GetComponent<PlayerHealth>();
@@ -33,16 +40,9 @@ public class StoneProjectile : MonoBehaviour
             return;
         }
 
-        // WALL / ENVIRONMENT
         if (other.CompareTag("Wall"))
         {
             Destroy(gameObject);
         }
-    }
-
-    void Rotate(Vector2 dir)
-    {
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }

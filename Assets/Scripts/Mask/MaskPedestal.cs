@@ -34,6 +34,7 @@ public class MaskPedestal : MonoBehaviour
         }
 
         ownerChief.OnMaskChosen(this);
+        MaskManager.Instance.CollectMaskPiece();
         Destroy(gameObject);
     }
 }

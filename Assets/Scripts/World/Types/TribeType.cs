@@ -2,5 +2,7 @@ public enum TribeType
 {
     TribeA = 0,
     TribeB = 1,
-    TribeC = 2
+    TribeC = 2,
+
+    none = 3
 }

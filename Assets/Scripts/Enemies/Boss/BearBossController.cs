@@ -56,7 +56,7 @@ public class BearBossController : MonoBehaviour
         throwTimer += Time.deltaTime;
         if (throwTimer >= currentThrowInterval)
         {
-            thrower.TryThrow(player.position);
+            thrower.StartThrow();
             throwTimer = 0f;
         }
 

@@ -4,16 +4,35 @@ public class BearBossThrow : MonoBehaviour
 {
     public GameObject stonePrefab;
     public Transform throwPoint;
-    public float throwCooldown = 3f;
 
-    float lastThrowTime;
+    Animator anim;
+    Transform player;
 
-    public void TryThrow(Vector2 target)
+    void Awake()
     {
-        if (Time.time < lastThrowTime + throwCooldown)
+        anim = GetComponent<Animator>();
+    }
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+    }
+
+    // called by controller
+    public void StartThrow()
+    {
+        Debug.Log("Boss StartThrow called");
+        if (anim != null)
+            anim.SetTrigger("Attack");
+    }
+
+    // called by ANIMATION EVENT
+    public void SpawnStone()
+    {
+        if (stonePrefab == null || throwPoint == null || player == null)
             return;
 
-        Vector2 dir = (target - (Vector2)throwPoint.position).normalized;
+        Vector2 dir = (player.position - throwPoint.position).normalized;
 
         GameObject stone = Instantiate(
             stonePrefab,
@@ -24,7 +43,5 @@ public class BearBossThrow : MonoBehaviour
         StoneProjectile proj = stone.GetComponent<StoneProjectile>();
         if (proj != null)
             proj.Launch(dir);
-
-        lastThrowTime = Time.time;
     }
 }
