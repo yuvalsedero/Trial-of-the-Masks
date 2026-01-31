@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: effectType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 563757053476735505, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: deathLoopSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 563757053476735505, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: deathImpactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ad3155d53fc542743a75bb616b8bdba4, type: 3}
     - target: {fileID: 2985026775208513523, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
