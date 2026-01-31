@@ -24,6 +24,10 @@ public class BoarHealth : MonoBehaviour, IDamageable
     Coroutine poisonCoroutine;
     Coroutine flashCoroutine;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip[] hitSounds;
+    [SerializeField] AudioClip[] deathSounds;
+
     void Awake()
     {
         currentHealth = maxHealth;
@@ -32,6 +36,8 @@ public class BoarHealth : MonoBehaviour, IDamageable
 
         if (sr != null)
             originalColor = sr.color;
+
+            audioSource = GetComponent<AudioSource>();
     }
 
     void LateUpdate()
@@ -48,6 +54,22 @@ public class BoarHealth : MonoBehaviour, IDamageable
     public void TakeDamage(int amount, Vector2 hitDirection)
     {
         currentHealth -= amount;
+
+        if (audioSource != null)
+{
+    AudioClip clipToPlay = null;
+
+    if (hitSounds != null && hitSounds.Length > 0)
+    {
+        clipToPlay = hitSounds[UnityEngine.Random.Range(0, hitSounds.Length)];
+    }
+
+    if (clipToPlay != null)
+    {
+        audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(clipToPlay);
+    }
+}
 
         // ❄ ICE
         if (MaskManager.Instance.ElementalEffect == MaskEffectType.Ice)
@@ -153,11 +175,29 @@ public class BoarHealth : MonoBehaviour, IDamageable
     // ---------------- DEATH ----------------
 
     void Die()
+{
+    OnDeath?.Invoke();
+    DropMeat();
+
+    // Play death sound independently
+    if (deathSounds != null && deathSounds.Length > 0)
     {
-        OnDeath?.Invoke();
-        DropMeat();
-        Destroy(gameObject);
+        AudioClip clipToPlay = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
+
+        // Create a temp GameObject for the sound
+        GameObject tempAudio = new GameObject("DeathSound");
+        tempAudio.transform.position = transform.position;
+
+        AudioSource tempSource = tempAudio.AddComponent<AudioSource>();
+        tempSource.clip = clipToPlay;
+        tempSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+        tempSource.Play();
+
+        Destroy(tempAudio, clipToPlay.length); // destroy when sound finishes
     }
+
+    Destroy(gameObject); // destroy the boar immediately
+}
 
     void DropMeat()
     {

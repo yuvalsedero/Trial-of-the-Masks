@@ -12,11 +12,17 @@ public class PlayerShoot : MonoBehaviour
     private Vector2 shootDirection;
     private Rigidbody2D rb;
 
+    public AudioClip[] shootSounds; // add as many as you want in Inspector
+private AudioSource audioSource;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         facing = GetComponent<PlayerFacing>();
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+if (audioSource == null)
+    audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
@@ -57,6 +63,12 @@ public class PlayerShoot : MonoBehaviour
             facing.LockFacingForShot(direction.x);
 
         animator.SetTrigger("Attack");
+        
+        if (shootSounds != null && shootSounds.Length > 0)
+{
+    AudioClip clip = shootSounds[Random.Range(0, shootSounds.Length)];
+    audioSource.PlayOneShot(clip);
+}
 
         if (MaskManager.Instance.DartEffect == MaskEffectType.DoubleShot)
         {
