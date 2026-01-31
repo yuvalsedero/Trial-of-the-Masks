@@ -12,11 +12,16 @@ public class MonkeyRanged : MonoBehaviour
 
     Transform player;
     float lastThrowTime;
+    public AudioClip[] throwSounds; // add as many as you want in Inspector
+private AudioSource audioSource;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         spawnTime = Time.time; // 👈 NEW
+        audioSource = GetComponent<AudioSource>();
+if (audioSource == null)
+    audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
@@ -49,6 +54,11 @@ public class MonkeyRanged : MonoBehaviour
 
         if (proj != null)
             proj.Launch(direction, bananaSpeed, ProjectileOwner.Enemy);
+            if (throwSounds != null && throwSounds.Length > 0)
+{
+    AudioClip clip = throwSounds[Random.Range(0, throwSounds.Length)];
+    audioSource.PlayOneShot(clip);
+}
     }
 
 

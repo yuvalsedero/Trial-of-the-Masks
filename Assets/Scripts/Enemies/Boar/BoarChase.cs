@@ -31,6 +31,9 @@ public class BoarChase : MonoBehaviour
     float nextChargeTime;
     Vector2 chargeDirection;
 
+    [SerializeField] AudioClip[] chargeSounds;
+    AudioSource audioSource;
+
     enum BoarState
     {
         Run,
@@ -47,6 +50,7 @@ public class BoarChase : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         if (sr != null) baseColor = sr.color;
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -182,9 +186,16 @@ public class BoarChase : MonoBehaviour
         state = BoarState.Charge;
         timer = 0f;
         chargeDirection = (player.position - transform.position).normalized;
+        if (audioSource != null && chargeSounds != null && chargeSounds.Length > 0)
+{
+    AudioClip clip = chargeSounds[Random.Range(0, chargeSounds.Length)];
+    audioSource.pitch = Random.Range(0.9f, 1.1f);
+    audioSource.PlayOneShot(clip);
+}
 
         if (anim != null)
             anim.SetBool("IsWindup", false); // back to Run anim
+            
     }
 
     void EnterRecovery()

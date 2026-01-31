@@ -24,7 +24,7 @@ public class MusicManager : MonoBehaviour
     // Target volumes (your spec)
     const float MAIN_MUSIC_FULL = 1f;
     const float MAIN_MUSIC_TRIBE = 0.8f;
-    const float MAIN_AMBIENCE = 0.8f;
+    const float MAIN_AMBIENCE = 0.7f;
 
     bool hasLeftSpawn = false;
     bool spawnFadeInProgress = false;

@@ -12,12 +12,20 @@ public class PlayerHealth : MonoBehaviour
     private bool isInvincible = false;
     private SpriteRenderer sr;
     private Color originalColor;
+
+    public AudioClip[] hitSounds; // add as many as you want in Inspector
+    public AudioClip[] deathSounds;
+    private AudioSource audioSource;
+
     void Awake()
     {
         currentHearts = maxHearts;
     }
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+if (audioSource == null)
+    audioSource = gameObject.AddComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         if (heartsUI != null)
             heartsUI.UpdateHearts();
@@ -43,6 +51,11 @@ public class PlayerHealth : MonoBehaviour
 
         currentHearts -= amount;
         Flash();
+        if (hitSounds != null && hitSounds.Length > 0)
+{
+    AudioClip clip = hitSounds[Random.Range(0, hitSounds.Length)];
+    audioSource.PlayOneShot(clip);
+}
 
         if (heartsUI != null)
             heartsUI.UpdateHearts();
@@ -77,9 +90,22 @@ public class PlayerHealth : MonoBehaviour
         isInvincible = false;
     }
 
-    void Die()
+void Die()
+{
+    Debug.Log("Player died!");
+
+    // Play random death sound using a temporary GameObject
+    if (deathSounds != null && deathSounds.Length > 0)
     {
-        Debug.Log("Player died!");
-        gameObject.SetActive(false);
+        AudioClip clip = deathSounds[Random.Range(0, deathSounds.Length)];
+        GameObject tempAudio = new GameObject("TempDeathAudio");
+        AudioSource aSource = tempAudio.AddComponent<AudioSource>();
+        aSource.clip = clip;
+        aSource.Play();
+        Destroy(tempAudio, clip.length); // destroy after sound finishes
     }
+
+    // Deactivate the player object
+    gameObject.SetActive(false);
+}
 }

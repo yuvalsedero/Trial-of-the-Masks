@@ -206,9 +206,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonkeyRanged
   attackRange: 7
   throwCooldown: 2
+  spawnAttackDelay: 1
   bananaPrefab: {fileID: 493857366225282850, guid: 1a75403ce84b9f741b5cb7e58412b78f, type: 3}
   throwPoint: {fileID: 7272402754885489304}
   bananaSpeed: 8
+  throwSounds:
+  - {fileID: 8300000, guid: 86ce69c3ce3a4ca4ca43fdd3809b7d0c, type: 3}
+  - {fileID: 8300000, guid: a8ee68726768ae549b002b3cdb03e7b7, type: 3}
 --- !u!114 &3058973750871681415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +230,13 @@ MonoBehaviour:
   flashTime: 0.1
   meatPickupPrefab: {fileID: 3512419587285750760, guid: a493be0b52500be4a8edfde400ea7c03, type: 3}
   meatSprites: []
+  hitSounds:
+  - {fileID: 8300000, guid: 5e61874a890fd754ab4f53c472353b1f, type: 3}
+  - {fileID: 8300000, guid: c2f1fd389b221f345a9193b6198b6752, type: 3}
+  - {fileID: 8300000, guid: d49926870a4c1de4a829ec96513a6367, type: 3}
+  - {fileID: 8300000, guid: dc22a280864cd1c43890f4cb82e868a5, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: d9b4ed2766f77a24ba1f73fc1e5049ba, type: 3}
 --- !u!114 &4182323358989445214
 MonoBehaviour:
   m_ObjectHideFlags: 0
