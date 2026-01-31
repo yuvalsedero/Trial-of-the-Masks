@@ -2,25 +2,25 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    private TribeChief nearbyChief;
+    private IInteractable nearbyInteractable;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out TribeChief chief))
+        if (other.TryGetComponent(out IInteractable interactable))
         {
-            nearbyChief = chief;
-            Debug.Log($"[PlayerInteraction] Entered range of TribeChief: {chief.dialogData.tribeType}");
+            nearbyInteractable = interactable;
+            Debug.Log("[PlayerInteraction] Entered range of interactable");
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.TryGetComponent(out TribeChief chief))
+        if (other.TryGetComponent(out IInteractable interactable))
         {
-            if (nearbyChief == chief)
+            if (nearbyInteractable == interactable)
             {
-                Debug.Log($"[PlayerInteraction] Left range of TribeChief: {chief.dialogData.tribeType}");
-                nearbyChief = null;
+                Debug.Log("[PlayerInteraction] Left range of interactable");
+                nearbyInteractable = null;
             }
         }
     }
@@ -28,15 +28,16 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         if (DialogManager.Instance != null &&
-        DialogManager.Instance.IsDialogOpen)
+            DialogManager.Instance.IsDialogOpen)
             return;
-        if (nearbyChief == null)
+
+        if (nearbyInteractable == null)
             return;
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("[PlayerInteraction] E pressed near TribeChief");
-            nearbyChief.Interact();
+            Debug.Log("[PlayerInteraction] E pressed");
+            nearbyInteractable.Interact();
         }
     }
 }

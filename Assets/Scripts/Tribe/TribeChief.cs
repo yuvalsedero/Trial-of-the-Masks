@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class TribeChief : MonoBehaviour
+public class TribeChief : MonoBehaviour, IInteractable
 {
     public TribeDialogData dialogData;
 

@@ -5,8 +5,10 @@ public class BananaProjectile : MonoBehaviour
     public int damage = 1;
     public float lifeTime = 4f;
 
-    public ProjectileOwner owner;
+    [Header("Spin")]
+    public float spinSpeed = 360f; // degrees per second
 
+    public ProjectileOwner owner;
     Rigidbody2D rb;
 
     void Awake()
@@ -21,9 +23,14 @@ public class BananaProjectile : MonoBehaviour
         Destroy(gameObject, lifeTime);
     }
 
+    void Update()
+    {
+        // spin around Z (2D spin)
+        transform.Rotate(0f, 0f, spinSpeed * Time.deltaTime);
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // --- ENEMY PROJECTILE ---
         if (owner == ProjectileOwner.Enemy && collision.CompareTag("Player"))
         {
             PlayerHealth health = collision.GetComponent<PlayerHealth>();
@@ -34,7 +41,6 @@ public class BananaProjectile : MonoBehaviour
             return;
         }
 
-        // --- PLAYER PROJECTILE ---
         if (owner == ProjectileOwner.Player && collision.CompareTag("Enemy"))
         {
             BoarHealth health = collision.GetComponent<BoarHealth>();
@@ -45,7 +51,6 @@ public class BananaProjectile : MonoBehaviour
             return;
         }
 
-        // --- WALL / ENVIRONMENT ---
         if (collision.CompareTag("Wall"))
         {
             Destroy(gameObject);
