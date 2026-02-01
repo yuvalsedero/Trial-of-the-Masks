@@ -442,7 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyChase
   baseSpeed: 1.5
   spawnChargeDelay: 0.3
-  chargeSpeed: 6
+  chargeSpeed: 7
   windupTime: 0.6
   chargeTime: 0.6
   recoveryTime: 0.5
@@ -479,8 +479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdfaaaa87a37cc54e91232d16960d8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  knockbackForce: 10
+  maxHealth: 1
+  knockbackForce: 12
   flashTime: 0.1
   meatPickupPrefab: {fileID: 3512419587285750760, guid: a493be0b52500be4a8edfde400ea7c03, type: 3}
   meatSprites:
@@ -523,7 +523,7 @@ AudioSource:
   m_GameObject: {fileID: 5620206781052210858}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3726600375925308210, guid: 1b6acaed98ede2b48a74382fdc25ee5f, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0

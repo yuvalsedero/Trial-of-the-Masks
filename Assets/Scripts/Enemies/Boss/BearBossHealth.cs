@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+
 public class BearBossHealth : MonoBehaviour, IDamageable
 {
     public int maxHealth = 40;
@@ -20,6 +21,7 @@ public class BearBossHealth : MonoBehaviour, IDamageable
     [Header("Hit Sounds")]
     public AudioClip[] hitSounds;
     private AudioSource audioSource;
+    private AudioClip lastHitClip; // Prevent same clip twice in a row
 
     [Header("Death Sound")]
     public AudioClip deathSound;
@@ -35,6 +37,8 @@ public class BearBossHealth : MonoBehaviour, IDamageable
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
+
+        audioSource.playOnAwake = false;
     }
 
     public void TakeDamage(int amount, Vector2 hitDir)
@@ -42,11 +46,7 @@ public class BearBossHealth : MonoBehaviour, IDamageable
         currentHealth -= amount;
 
         Flash();
-        if (hitSounds != null && hitSounds.Length > 0)
-        {
-            AudioClip clip = hitSounds[Random.Range(0, hitSounds.Length)];
-            audioSource.PlayOneShot(clip);
-        }
+        PlayHitSoundSteal();
 
         if (!phaseTwoTriggered && currentHealth <= maxHealth / 2)
         {
@@ -56,6 +56,35 @@ public class BearBossHealth : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
             Die();
+    }
+
+    void PlayHitSoundSteal()
+    {
+        if (hitSounds == null || hitSounds.Length == 0)
+            return;
+
+        AudioClip clip;
+        if (hitSounds.Length == 1)
+        {
+            clip = hitSounds[0];
+        }
+        else
+        {
+            // Pick a new clip that isn’t the same as last one
+            do
+            {
+                clip = hitSounds[Random.Range(0, hitSounds.Length)];
+            } while (clip == lastHitClip);
+        }
+
+        lastHitClip = clip;
+
+        // **Steal behavior:** stop previous hit sound if still playing
+        if (audioSource.isPlaying)
+            audioSource.Stop();
+
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 
     void Flash()
@@ -93,11 +122,11 @@ public class BearBossHealth : MonoBehaviour, IDamageable
             AudioSource aSource = tempAudio.AddComponent<AudioSource>();
             aSource.clip = deathSound;
             aSource.Play();
-            Destroy(tempAudio, deathSound.length); // cleanup after finished
+            Destroy(tempAudio, deathSound.length); // cleanup
         }
         ScreenFade.Instance.FadeOut(() =>
-           {
-               SceneManager.LoadScene("EndGameScene");
-           });
+        {
+            SceneManager.LoadScene("EndGameScene");
+        });
     }
 }

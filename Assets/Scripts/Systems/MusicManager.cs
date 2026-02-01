@@ -203,10 +203,10 @@ public class MusicManager : MonoBehaviour
 
     IEnumerator PlayBossStingerThenLoop()
 {
-    // Start boss stinger immediately
+    // 1️⃣ Play boss stinger immediately
     bossStinger.Play();
 
-    // Fade out all other layers in parallel
+    // 2️⃣ Fade out all other layers in parallel
     float fadeTime = fadeDuration;
     float t = 0f;
 
@@ -230,15 +230,18 @@ public class MusicManager : MonoBehaviour
         yield return null;
     }
 
-    // Snap volumes to 0 (safety)
+    // Snap volumes to 0
     mainMusic.volume = 0f;
     mainAmbience.volume = 0f;
     tribeA.volume = 0f;
     tribeB.volume = 0f;
     tribeC.volume = 0f;
 
-    // Start boss loop immediately at full volume
-    bossMusic.volume = 1f;
+    // 3️⃣ Wait for the stinger to finish
+    yield return new WaitWhile(() => bossStinger.isPlaying);
+
+    // 4️⃣ Start boss loop immediately at full volume
+    bossMusic.volume = 0.8f;
     bossMusic.Play(); // looping track
 }
 
@@ -286,7 +289,7 @@ public class MusicManager : MonoBehaviour
         tribeA.volume = 0f;
         tribeB.volume = 0f;
         tribeC.volume = 0f;
-        bossMusic.volume = 1f;
+        bossMusic.volume = 0.7f;
     }
 
     IEnumerator FadeBossToMain()

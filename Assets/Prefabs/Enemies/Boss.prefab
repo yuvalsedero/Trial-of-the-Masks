@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6761768167499114685}
   - component: {fileID: 2176803446136880587}
   - component: {fileID: 4704027475380378625}
+  - component: {fileID: -3524080315576009855}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -204,7 +205,7 @@ MonoBehaviour:
   - {fileID: 4119410276078821848}
   phase1Amount: 2
   phase2Amount: 4
-  maxMinionsAlive: 3
+  maxMinionsAlive: 6
 --- !u!114 &3589439566793867145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf01805b833565429b826307e64476f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BearBossMovement
-  moveSpeed: 1.2
+  moveSpeed: 1
 --- !u!114 &6761768167499114685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1390bb3401186cc46b1d3424788ece26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BearBossHealth
-  maxHealth: 100
+  maxHealth: 180
   flashTime: 0.1
   hitColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   hitSounds:
@@ -254,9 +255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BearBossController
   throwIntervalPhase1: 4
-  summonIntervalPhase1: 15
+  summonIntervalPhase1: 8
   throwIntervalPhase2: 2
-  summonIntervalPhase2: 15
+  summonIntervalPhase2: 4
 --- !u!95 &4704027475380378625
 Animator:
   serializedVersion: 7
@@ -279,6 +280,103 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &-3524080315576009855
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872595057639113051}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.8
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1380268694085471221
 GameObject:
   m_ObjectHideFlags: 0

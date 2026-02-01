@@ -184,31 +184,38 @@ public class RoomManager : MonoBehaviour
     }
 
     private void HandleRoomMusic(Vector2Int roomIndex)
+{
+    if (!WorldMap.Rooms.TryGetValue(roomIndex, out RoomInfo info))
+        return;
+
+    Debug.Log($"[ROOM] Index={roomIndex} Type={info.roomType} Tribe={info.tribe}");
+
+    switch (info.roomType)
     {
-        if (!WorldMap.Rooms.TryGetValue(roomIndex, out RoomInfo info))
-            return;
+        case RoomType.Tribe:
+            Debug.Log($"[MUSIC] Enter tribe {info.tribe}");
+            MusicManager.Instance.EnterTribe(info.tribe);
+            // Optionally lock tribe room doors too
+            // SetDoorsLocked(roomIndex, true);
+            break;
 
-        Debug.Log($"[ROOM] Index={roomIndex} Type={info.roomType} Tribe={info.tribe}");
+        case RoomType.Boss:
+            Debug.Log("[MUSIC] Enter BOSS");
+            MusicManager.Instance.EnterBoss();
+            // ✅ Lock all doors in the boss room
+            SetDoorsLocked(roomIndex, true);
+            break;
 
-        switch (info.roomType)
-        {
-            case RoomType.Tribe:
-                Debug.Log($"[MUSIC] Enter tribe {info.tribe}");
-                MusicManager.Instance.EnterTribe(info.tribe);
-                break;
-
-            case RoomType.Boss:
-                Debug.Log("[MUSIC] Enter BOSS");
-                MusicManager.Instance.EnterBoss();
-                break;
-
-            default:
-                Debug.Log("[MUSIC] Exit tribe / boss");
-                MusicManager.Instance.ExitTribe();
-                MusicManager.Instance.ExitBoss();
-                break;
-        }
+        default:
+            Debug.Log("[MUSIC] Exit tribe / boss");
+            MusicManager.Instance.ExitTribe();
+            MusicManager.Instance.ExitBoss();
+            // Unlock doors if needed when leaving
+            SetDoorsLocked(roomIndex, false);
+            break;
     }
+}
+
 
 
     public void SetDoorsLocked(Vector2Int roomIndex, bool locked)
