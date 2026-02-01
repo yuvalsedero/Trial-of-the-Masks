@@ -289,7 +289,7 @@ public class MusicManager : MonoBehaviour
         tribeA.volume = 0f;
         tribeB.volume = 0f;
         tribeC.volume = 0f;
-        bossMusic.volume = 0.7f;
+        bossMusic.volume = 0.8f;
     }
 
     IEnumerator FadeBossToMain()

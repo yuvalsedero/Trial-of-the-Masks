@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4339183007045788397, guid: aa7863b16accaf948a6872de9ebf9615, type: 3}
+      propertyPath: m_text
+      value: Speed
+      objectReference: {fileID: 0}
     - target: {fileID: 4583417893679375542, guid: aa7863b16accaf948a6872de9ebf9615, type: 3}
       propertyPath: m_Name
       value: MaskPedastal_Speed

@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4339183007045788397, guid: aa7863b16accaf948a6872de9ebf9615, type: 3}
+      propertyPath: m_text
+      value: Strength
+      objectReference: {fileID: 0}
     - target: {fileID: 4583417893679375542, guid: aa7863b16accaf948a6872de9ebf9615, type: 3}
       propertyPath: m_Name
       value: MaskPedastal_Str
@@ -73,7 +77,8 @@ PrefabInstance:
       value: Strength
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5344388149894286028, guid: aa7863b16accaf948a6872de9ebf9615, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa7863b16accaf948a6872de9ebf9615, type: 3}

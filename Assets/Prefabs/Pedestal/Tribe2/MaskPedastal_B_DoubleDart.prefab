@@ -82,6 +82,12 @@ PrefabInstance:
 
         Shot'
       objectReference: {fileID: 0}
+    - target: {fileID: 6437983387000901872, guid: a0b3c65d1b89e9e48badd42157f97104, type: 3}
+      propertyPath: m_text
+      value: 'Double
+
+        Shot'
+      objectReference: {fileID: 0}
     - target: {fileID: 7109168463192026413, guid: a0b3c65d1b89e9e48badd42157f97104, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.059
