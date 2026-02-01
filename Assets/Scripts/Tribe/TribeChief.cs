@@ -52,15 +52,12 @@ public class TribeChief : MonoBehaviour, IInteractable
     {
         int cost = dialogData.meatCost;
 
-        if (!PlayerInventory.Instance.SpendMeat(cost))
+        if (!PlayerInventory.Instance.HasEnoughMeat(cost))
         {
-            DialogManager.Instance.OpenDialog(
-                dialogData.notEnoughMeatLines,
-                null
-            );
             return;
         }
 
+        PlayerInventory.Instance.SpendMeat(cost);
         StartConversation();
     }
     void StartConversation()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BearMinionChase : MonoBehaviour, IDamageable
+public class BearMinionChase : MonoBehaviour
 {
     public float moveSpeed = 2.2f;
     public int contactDamage = 1;
@@ -30,12 +30,13 @@ public class BearMinionChase : MonoBehaviour, IDamageable
         if (player == null)
             return;
 
-        // Knockback window timer
+        // Knockback timer
         if (allowKnockback)
         {
             knockbackTimer -= Time.fixedDeltaTime;
             if (knockbackTimer <= 0f)
                 allowKnockback = false;
+            return; // ⛔ DO NOT apply chase movement
         }
 
         Vector2 dir = (player.position - transform.position).normalized;
@@ -75,15 +76,13 @@ public class BearMinionChase : MonoBehaviour, IDamageable
         allowKnockback = true;
         knockbackTimer = duration;
     }
-
-    public void TakeDamage(int amount, Vector2 hitDirection)
+    public void ApplyKnockback(Vector2 hitDirection, float duration = 0.08f)
     {
-        AllowKnockback(0.08f);
+        allowKnockback = true;
+        knockbackTimer = duration;
 
-        if (allowKnockback)
-        {
-            rb.AddForce(hitDirection.normalized * knockbackForce, ForceMode2D.Impulse);
-        }
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(hitDirection.normalized * knockbackForce, ForceMode2D.Impulse);
     }
 
     public Transform GetTransform()

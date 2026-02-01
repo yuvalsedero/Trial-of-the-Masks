@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6c617b683a5e049b577ba402a5657d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BearMinionChase
-  moveSpeed: 4
+  moveSpeed: 3
   contactDamage: 1
   contactCooldown: 1
   knockbackForce: 6

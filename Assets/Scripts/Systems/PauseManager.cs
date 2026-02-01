@@ -6,8 +6,6 @@ public class PauseManager : MonoBehaviour
 {
     [Header("UI")]
     public GameObject pauseMenuPanel;
-    public Button pauseButton;
-    public Button resumeButton;
 
     [Header("Audio")]
     public AudioMixer audioMixer;
@@ -29,8 +27,6 @@ public class PauseManager : MonoBehaviour
     {
         pauseMenuPanel.SetActive(false);
 
-        pauseButton.onClick.AddListener(TogglePause);
-        resumeButton.onClick.AddListener(TogglePause);
 
         if (audioMixer != null)
         {
@@ -47,7 +43,14 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        // Allow "any key / mouse button" to resume
+        // ESC always toggles pause
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+            return;
+        }
+
+        // ANY key or mouse resumes (when paused)
         if (isPaused && canUnpauseByInput && Input.anyKeyDown)
         {
             TogglePause();

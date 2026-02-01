@@ -44,4 +44,8 @@ public class PlayerInventory : MonoBehaviour
         Debug.Log($"Meat spent. Remaining: {meatCount}");
         return true;
     }
+    public bool HasEnoughMeat(int amount)
+    {
+        return meatCount >= amount;
+    }
 }

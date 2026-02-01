@@ -7,7 +7,7 @@ public class TribeDialogData : ScriptableObject
     public TribeType tribeType;
 
     [Header("Cost")]
-    public int meatCost = 5;
+    public int meatCost = 0;
 
     [Header("Generic (always first)")]
     [TextArea(3, 6)]

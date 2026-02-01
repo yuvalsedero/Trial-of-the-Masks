@@ -2284,6 +2284,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1659455341387165816 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2237022090151091992, guid: 5f98dffa0b7093c4c9f14c2e0efd2821, type: 3}
+  m_PrefabInstance: {fileID: 580100592637701984}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026475419640503147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e86c8e7a6052f45b1999b7dc09efd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TribeChief
 --- !u!4 &9057495638069042200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8484322244173542264, guid: 5f98dffa0b7093c4c9f14c2e0efd2821, type: 3}
@@ -3645,6 +3656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChiefIndecator
       objectReference: {fileID: 0}
+    - target: {fileID: 4455904459240918599, guid: fc34fccd2a5ee374f9781ba4fea9245a, type: 3}
+      propertyPath: chief
+      value: 
+      objectReference: {fileID: 1659455341387165816}
     - target: {fileID: 5047373783724113545, guid: fc34fccd2a5ee374f9781ba4fea9245a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.99
