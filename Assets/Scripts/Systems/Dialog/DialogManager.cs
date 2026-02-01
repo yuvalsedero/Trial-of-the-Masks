@@ -10,6 +10,7 @@ public class DialogManager : MonoBehaviour
     public GameObject dialogCanvas;
     public TextMeshProUGUI dialogText;
     public float typingSpeed = 0.03f;
+    bool blockInput = false;
 
     Queue<string> lines = new Queue<string>();
     System.Action onComplete;
@@ -36,7 +37,7 @@ public class DialogManager : MonoBehaviour
         if (!isOpen)
             return;
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!blockInput && Input.GetKeyDown(KeyCode.E))
             ShowNextLine();
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -49,6 +50,16 @@ public class DialogManager : MonoBehaviour
         if (currentVoice != null)
             lineSounds = currentVoice.clips;
     }
+    IEnumerator ShowFirstLineNextFrame()
+    {
+        yield return null; // wait ONE frame
+        ShowNextLine();
+    }
+    IEnumerator UnblockInputNextFrame()
+    {
+        yield return null; // wait one frame
+        blockInput = false;
+    }
     void StopVoice()
     {
         if (voiceSource != null && voiceSource.isPlaying)
@@ -56,6 +67,7 @@ public class DialogManager : MonoBehaviour
     }
     void PlayVoice()
     {
+
         if (voiceSource == null || lineSounds == null || lineSounds.Length == 0)
             return;
 
@@ -70,6 +82,15 @@ public class DialogManager : MonoBehaviour
         if (isOpen)
             return;
 
+        // 🔴 HARD RESET DIALOG STATE
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        StopVoice();
+        isTyping = false;
+        currentLine = "";
+        dialogText.text = "";
+
         lines.Clear();
         foreach (var l in dialogLines)
             lines.Enqueue(l);
@@ -80,8 +101,11 @@ public class DialogManager : MonoBehaviour
         Time.timeScale = 0f;
 
         isOpen = true;
-        ShowNextLine();
+        blockInput = true;
+        StartCoroutine(UnblockInputNextFrame());
+        StartCoroutine(ShowFirstLineNextFrame());
     }
+
 
     // 🔑 THIS IS THE KEY ADDITION
     public void AppendLines(List<string> moreLines, System.Action onFinish = null)

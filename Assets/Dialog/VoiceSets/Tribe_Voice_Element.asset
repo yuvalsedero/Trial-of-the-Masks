@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca25b33db1e768e43bc2dca0f288850a, type: 3}
-  m_Name: TribeWeapon_Voice
+  m_Name: Tribe_Voice_Element
   m_EditorClassIdentifier: Assembly-CSharp::DialogVoiceSet
   clips:
   - {fileID: 8300000, guid: 3f1f2677f1b04eb4b9c3b84961093166, type: 3}
