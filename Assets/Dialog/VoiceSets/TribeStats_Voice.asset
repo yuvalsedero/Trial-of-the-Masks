@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca25b33db1e768e43bc2dca0f288850a, type: 3}
   m_Name: TribeStats_Voice
   m_EditorClassIdentifier: Assembly-CSharp::DialogVoiceSet
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 3706015cc0132fb4cbbf062b355ed0e3, type: 3}
+  - {fileID: 8300000, guid: c787d4c0bbbddd24fafdf6ca6c1dac9f, type: 3}
+  - {fileID: 8300000, guid: a518417f7ff4976439852ebf45bf55e4, type: 3}
+  - {fileID: 8300000, guid: 2383407ab70201e49a2f6c48a110262c, type: 3}
+  - {fileID: 8300000, guid: b371ca03f5839624890990e42630366c, type: 3}
+  - {fileID: 8300000, guid: 2f38d37755023ed4298b06580efd65ac, type: 3}
+  - {fileID: 8300000, guid: 32edff4bb85334f40a5d341b32ffcafa, type: 3}
+  - {fileID: 8300000, guid: e73dae10af4d0d843ba414d3eb8bdfd1, type: 3}
