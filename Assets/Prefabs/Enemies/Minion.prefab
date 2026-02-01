@@ -117,7 +117,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 560460489
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7244724120446997736, guid: d9029f7dae4c57d4a8ef5279df354cc9, type: 3}
@@ -209,6 +209,7 @@ MonoBehaviour:
   moveSpeed: 4
   contactDamage: 1
   contactCooldown: 1
+  knockbackForce: 6
 --- !u!114 &8245959989768094105
 MonoBehaviour:
   m_ObjectHideFlags: 0

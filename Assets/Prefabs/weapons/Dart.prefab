@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2795871259594727232}
   - component: {fileID: 8242223115024061860}
   - component: {fileID: 2198990907693313455}
+  - component: {fileID: 4642414060016007619}
   m_Layer: 8
   m_Name: Dart
   m_TagString: Projectile
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 132318549
+  m_SortingLayerID: 560460489
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
@@ -189,3 +190,18 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.5}
       - {x: 0.5, y: 0.5}
   m_UseDelaunayMesh: 1
+--- !u!114 &4642414060016007619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8751889413324831728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4079d19afe24c864bbc283c70bd3d819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
+  sortPoint: {fileID: 5020038024646666273}
+  offset: 0
+  multiplier: 100

@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 6
-  knockbackForce: 12
+  knockbackForce: 10
   flashTime: 0.1
   meatPickupPrefab: {fileID: 3512419587285750760, guid: a493be0b52500be4a8edfde400ea7c03, type: 3}
   meatSprites:
