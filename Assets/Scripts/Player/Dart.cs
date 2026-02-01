@@ -6,28 +6,45 @@ public class Dart : MonoBehaviour
     public float speed = 12f;
     public float lifetime = 2f;
     public float momentumFactor = 0.3f;
+    MaskEffectType dartEffect;
 
     [Header("Ricochet")]
     public float ricochetSearchRadius = 6f;
-    Rigidbody2D rb;
 
+    [Header("Hit Flash FX")]
+    public GameObject hitFlashPrefab;
+
+    public Color iceColor = new Color(0.6f, 0.85f, 1f);
+    public Color poisonColor = new Color(0.3f, 0.9f, 0.3f);
+    public Color fireColor = new Color(1f, 0.4f, 0.1f);
+
+    Rigidbody2D rb;
     int remainingBounces;
     bool piercing;
 
-    IDamageable lastHitEnemy;// 🔑 THIS IS CRITICAL
+    IDamageable lastHitEnemy;
+    public void InitFromMask()
+    {
+        dartEffect = MaskManager.Instance.ElementalEffect;
 
+        piercing = dartEffect == MaskEffectType.Piercing;
+        remainingBounces = dartEffect == MaskEffectType.Ricochet ? 1 : 0;
+    }
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        // 🔑 SNAPSHOT MASK STATE HERE
+        dartEffect = MaskManager.Instance.ElementalEffect;
+
+        piercing = dartEffect == MaskEffectType.Piercing;
+        remainingBounces = dartEffect == MaskEffectType.Ricochet ? 1 : 0;
+
         Destroy(gameObject, lifetime);
     }
 
-    public void InitFromMask()
-    {
-        var effect = MaskManager.Instance.DartEffect;
-        piercing = effect == MaskEffectType.Piercing;
-        remainingBounces = effect == MaskEffectType.Ricochet ? 1 : 0;
-    }
+
+
     public void Fire(Vector2 shootDir, Vector2 inheritedVelocity)
     {
         Vector2 finalVelocity =
@@ -37,14 +54,10 @@ public class Dart : MonoBehaviour
         rb.linearVelocity = finalVelocity;
         Rotate(finalVelocity);
     }
-    void RotateToDirection(Vector2 dir)
-    {
-        if (dir.sqrMagnitude < 0.0001f) return;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log($"DartEffect at hit = {dartEffect}");
         if (other.CompareTag("Projectile"))
             return;
 
@@ -62,6 +75,7 @@ public class Dart : MonoBehaviour
         lastHitEnemy = enemy;
 
         enemy.TakeDamage(damage, rb.linearVelocity);
+        SpawnHitFlash(other);
 
         if (piercing)
             return;
@@ -71,7 +85,6 @@ public class Dart : MonoBehaviour
             remainingBounces--;
 
             Vector2 dir = FindAnotherEnemy(enemy);
-
             if (dir == Vector2.zero)
             {
                 Destroy(gameObject);
@@ -86,6 +99,51 @@ public class Dart : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void SpawnHitFlash(Collider2D hitCollider)
+    {
+        if (hitFlashPrefab == null)
+            return;
+
+        GameObject fx = Instantiate(hitFlashPrefab, transform.position, Quaternion.identity);
+
+        HitFlashFX fxComp = fx.GetComponent<HitFlashFX>();
+        if (fxComp == null)
+            return;
+
+        float scale = 0.15f;
+        Color color = Color.white;
+
+        switch (dartEffect)
+        {
+            case MaskEffectType.Ice:
+                color = iceColor;
+                break;
+
+            case MaskEffectType.Poison:
+                color = poisonColor;
+                break;
+
+            case MaskEffectType.Fire:
+                color = fireColor;
+                scale = GetColliderSize(hitCollider);
+                break;
+        }
+
+        fx.transform.localScale = Vector3.one * scale;
+        fxComp.Play(color); // 🔑 THIS is the key
+    }
+
+
+    float GetColliderSize(Collider2D col)
+    {
+        if (col is CircleCollider2D c)
+            return c.radius * 2f;
+
+        if (col is BoxCollider2D b)
+            return Mathf.Max(b.size.x, b.size.y);
+
+        return 0.8f;
+    }
 
     Vector2 FindAnotherEnemy(IDamageable hitEnemy)
     {
@@ -113,7 +171,6 @@ public class Dart : MonoBehaviour
 
         return Vector2.zero;
     }
-
 
     void Rotate(Vector2 dir)
     {

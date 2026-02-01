@@ -110,7 +110,7 @@ public class PlayerShoot : MonoBehaviour
         GameObject dartObj = Instantiate(dartPrefab, spawnPos, Quaternion.identity);
         Dart dart = dartObj.GetComponent<Dart>();
 
-        dart.InitFromMask();
+
         var stats = GetComponent<PlayerCombatStats>();
         if (stats != null)
             dart.damage += stats.bonusDamage;
@@ -126,7 +126,7 @@ public class PlayerShoot : MonoBehaviour
         GameObject dartObj = Instantiate(dartPrefab, spawnPos, Quaternion.identity);
         Dart dart = dartObj.GetComponent<Dart>();
 
-        dart.InitFromMask();
+
         var stats = GetComponent<PlayerCombatStats>();
         if (stats != null)
             dart.damage += stats.bonusDamage;
