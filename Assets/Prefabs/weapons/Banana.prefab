@@ -246,4 +246,7 @@ MonoBehaviour:
   meatPickupPrefab: {fileID: 0}
   meatSprites: []
   hitSounds: []
-  deathSounds: []
+  deathSounds:
+  - {fileID: 8300000, guid: c05de2a4d3c89d142ae0a3cd379193b0, type: 3}
+  - {fileID: 8300000, guid: da9f360d4ac72b446a851fbc5006bd45, type: 3}
+  - {fileID: 8300000, guid: 56fd3184cb11884499d5513b2c473ecf, type: 3}
