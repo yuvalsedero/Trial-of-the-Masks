@@ -10,6 +10,15 @@ public class TribeChief : MonoBehaviour, IInteractable
     public Transform[] pedestalSpawnPoints;
     public DialogVoiceSet voiceSet;
     private readonly List<MaskPedestal> spawnedPedestals = new();
+    public bool IsWaitingForChoice =>
+    state == ChiefState.PedestalsSpawned;
+
+    public bool IsCompleted =>
+        state == ChiefState.Completed;
+
+    public bool CanStartConversation =>
+        state == ChiefState.NotStarted;
+
 
     enum ChiefState
     {
@@ -28,7 +37,7 @@ public class TribeChief : MonoBehaviour, IInteractable
         switch (state)
         {
             case ChiefState.NotStarted:
-                StartConversation();
+                TryStartConversation();
                 break;
 
             case ChiefState.Completed:
@@ -39,7 +48,21 @@ public class TribeChief : MonoBehaviour, IInteractable
                 break;
         }
     }
+    void TryStartConversation()
+    {
+        int cost = dialogData.meatCost;
 
+        if (!PlayerInventory.Instance.SpendMeat(cost))
+        {
+            DialogManager.Instance.OpenDialog(
+                dialogData.notEnoughMeatLines,
+                null
+            );
+            return;
+        }
+
+        StartConversation();
+    }
     void StartConversation()
     {
         DialogManager.Instance.SetVoice(voiceSet);

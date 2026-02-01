@@ -13,18 +13,13 @@ MonoBehaviour:
   m_Name: TribeElementDialog
   m_EditorClassIdentifier: Assembly-CSharp::TribeDialogData
   tribeType: 0
-  meatRequired: 10
+  meatCost: 4
   genericLines:
   - Greeting Young one.
   - You seek the power of nature...
   - ' Possible, but first take part in the circle of life. '
   - Bring us the meat of your prey,
   - YOU are the predator.
-  enoughLines:
-  - You have enough meat for us all!
-  - Thank you, young one.
-  notEnoughLines:
-  - You dont have enough meat to feed us all, Child.
-  - We need more pieces of meat to perform the CEREMONY
+  notEnoughMeatLines: []
   completedLines:
   - Go forth and retrieve the remaining pieces of the MASK.
