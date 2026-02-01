@@ -8,15 +8,16 @@ public class Door : MonoBehaviour
     private Collider2D col;
     public SpriteRenderer sr;
 
-    private static readonly Color unlockedColor = Color.lightGray;
-    private static readonly Color lockedColor = Color.red;
+    // Colors
+    private static readonly Color unlockedColor = new Color(0.75f, 0.75f, 0.75f);
+    private static readonly Color lockedColor = Color.gray;
 
     private void Awake()
     {
         col = GetComponent<Collider2D>();
+
         if (sr == null)
             sr = GetComponent<SpriteRenderer>();
-
 
         SetLocked(false); // default state
     }
