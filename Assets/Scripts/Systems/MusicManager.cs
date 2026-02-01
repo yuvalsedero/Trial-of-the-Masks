@@ -19,17 +19,19 @@ public class MusicManager : MonoBehaviour
     public AudioSource tribeC;
 
     [Header("Boss")]
-    public AudioSource bossMusic;   // LOOPED
+    public AudioSource bossMusic;
+    public AudioSource bossStinger; // one-shot stinger
 
     [Header("Fade")]
-    public float fadeDuration = 2f;
+    public float fadeDuration = 1.5f;
 
-    const float MAIN_FULL = 1f;
-    const float MAIN_TRIBE = 0.8f;
-    const float AMBIENCE = 0.8f;
+    const float MAIN_FULL = 0.8f;
+    const float MAIN_TRIBE = 0.6f;
+    const float AMBIENCE = 0.6f;
 
     bool hasLeftSpawn = false;
     bool spawnFadeInProgress = false;
+    bool inBoss = false;
 
     Coroutine fadeCoroutine;
 
@@ -53,8 +55,8 @@ public class MusicManager : MonoBehaviour
 
         bossMusic.Play();
 
-        spawnMusic.volume = 1f;
-        spawnAmbience.volume = 1f;
+        spawnMusic.volume = 0.8f;
+        spawnAmbience.volume = 0.5f;
 
         mainMusic.volume = 0f;
         mainAmbience.volume = 0f;
@@ -67,36 +69,42 @@ public class MusicManager : MonoBehaviour
     }
 
     // ================= SPAWN =================
+
     public void LeaveSpawnForever()
     {
         if (hasLeftSpawn) return;
 
         hasLeftSpawn = true;
         spawnFadeInProgress = true;
-        StartFade(FadeSpawnOutAndMainIn());
+
+        StartFade(FadeSpawnOutAndMainIn(), true);
     }
 
     IEnumerator FadeSpawnOutAndMainIn()
     {
         float t = 0f;
 
+        float sm = spawnMusic.volume;
+        float sa = spawnAmbience.volume;
+        float mm = mainMusic.volume;
+        float ma = mainAmbience.volume;
+
         while (t < fadeDuration)
         {
             t += Time.unscaledDeltaTime;
             float k = t / fadeDuration;
 
-            spawnMusic.volume = Mathf.Lerp(1f, 0f, k);
-            spawnAmbience.volume = Mathf.Lerp(1f, 0f, k);
+            spawnMusic.volume = Mathf.Lerp(sm, 0f, k);
+            spawnAmbience.volume = Mathf.Lerp(sa, 0f, k);
 
-            mainMusic.volume = Mathf.Lerp(0f, MAIN_FULL, k);
-            mainAmbience.volume = Mathf.Lerp(0f, AMBIENCE, k);
+            mainMusic.volume = Mathf.Lerp(mm, MAIN_FULL, k);
+            mainAmbience.volume = Mathf.Lerp(ma, AMBIENCE, k);
 
             yield return null;
         }
 
         spawnMusic.volume = 0f;
         spawnAmbience.volume = 0f;
-
         mainMusic.volume = MAIN_FULL;
         mainAmbience.volume = AMBIENCE;
 
@@ -104,14 +112,18 @@ public class MusicManager : MonoBehaviour
     }
 
     // ================= TRIBES =================
+
     public void EnterTribe(TribeType tribe)
     {
+        if (!hasLeftSpawn || spawnFadeInProgress || inBoss)
+            return;
+
         StartFade(FadeToTribe(tribe));
     }
 
     public void ExitTribe()
     {
-        if (!hasLeftSpawn || spawnFadeInProgress)
+        if (!hasLeftSpawn || spawnFadeInProgress || inBoss)
             return;
 
         StartFade(FadeToMain());
@@ -121,18 +133,24 @@ public class MusicManager : MonoBehaviour
     {
         float t = 0f;
 
+        float mm = mainMusic.volume;
+        float ta = tribeA.volume;
+        float tb = tribeB.volume;
+        float tc = tribeC.volume;
+
         while (t < fadeDuration)
         {
             t += Time.unscaledDeltaTime;
             float k = t / fadeDuration;
 
-            mainMusic.volume = Mathf.Lerp(mainMusic.volume, MAIN_TRIBE, k);
+            spawnMusic.volume = 0f;
+            spawnAmbience.volume = 0f;
 
-            tribeA.volume = Mathf.Lerp(tribeA.volume, tribe == TribeType.TribeA ? 1f : 0f, k);
-            tribeB.volume = Mathf.Lerp(tribeB.volume, tribe == TribeType.TribeB ? 1f : 0f, k);
-            tribeC.volume = Mathf.Lerp(tribeC.volume, tribe == TribeType.TribeC ? 1f : 0f, k);
+            mainMusic.volume = Mathf.Lerp(mm, MAIN_TRIBE, k);
 
-            bossMusic.volume = Mathf.Lerp(bossMusic.volume, 0f, k);
+            tribeA.volume = Mathf.Lerp(ta, tribe == TribeType.TribeA ? 1f : 0f, k);
+            tribeB.volume = Mathf.Lerp(tb, tribe == TribeType.TribeB ? 1f : 0f, k);
+            tribeC.volume = Mathf.Lerp(tc, tribe == TribeType.TribeC ? 1f : 0f, k);
 
             yield return null;
         }
@@ -142,32 +160,95 @@ public class MusicManager : MonoBehaviour
     {
         float t = 0f;
 
+        float mm = mainMusic.volume;
+        float ta = tribeA.volume;
+        float tb = tribeB.volume;
+        float tc = tribeC.volume;
+
         while (t < fadeDuration)
         {
             t += Time.unscaledDeltaTime;
             float k = t / fadeDuration;
 
-            mainMusic.volume = Mathf.Lerp(mainMusic.volume, MAIN_FULL, k);
+            mainMusic.volume = Mathf.Lerp(mm, MAIN_FULL, k);
 
-            tribeA.volume = Mathf.Lerp(tribeA.volume, 0f, k);
-            tribeB.volume = Mathf.Lerp(tribeB.volume, 0f, k);
-            tribeC.volume = Mathf.Lerp(tribeC.volume, 0f, k);
-
-            bossMusic.volume = Mathf.Lerp(bossMusic.volume, 0f, k);
+            tribeA.volume = Mathf.Lerp(ta, 0f, k);
+            tribeB.volume = Mathf.Lerp(tb, 0f, k);
+            tribeC.volume = Mathf.Lerp(tc, 0f, k);
 
             yield return null;
         }
+
+        tribeA.volume = 0f;
+        tribeB.volume = 0f;
+        tribeC.volume = 0f;
+        mainMusic.volume = MAIN_FULL;
     }
 
     // ================= BOSS =================
-    public void EnterBoss()
+
+        public void EnterBoss()
     {
-        StartFade(FadeToBoss());
+        if (inBoss) return;
+
+        inBoss = true;
+
+        // Stop any current fades
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+
+        // Start coroutine to play stinger then boss
+        fadeCoroutine = StartCoroutine(PlayBossStingerThenLoop());
     }
+
+    IEnumerator PlayBossStingerThenLoop()
+{
+    // Start boss stinger immediately
+    bossStinger.Play();
+
+    // Fade out all other layers in parallel
+    float fadeTime = fadeDuration;
+    float t = 0f;
+
+    float mm = mainMusic.volume;
+    float ma = mainAmbience.volume;
+    float ta = tribeA.volume;
+    float tb = tribeB.volume;
+    float tc = tribeC.volume;
+
+    while (t < fadeTime)
+    {
+        t += Time.unscaledDeltaTime;
+        float k = t / fadeTime;
+
+        mainMusic.volume = Mathf.Lerp(mm, 0f, k);
+        mainAmbience.volume = Mathf.Lerp(ma, 0f, k);
+        tribeA.volume = Mathf.Lerp(ta, 0f, k);
+        tribeB.volume = Mathf.Lerp(tb, 0f, k);
+        tribeC.volume = Mathf.Lerp(tc, 0f, k);
+
+        yield return null;
+    }
+
+    // Snap volumes to 0 (safety)
+    mainMusic.volume = 0f;
+    mainAmbience.volume = 0f;
+    tribeA.volume = 0f;
+    tribeB.volume = 0f;
+    tribeC.volume = 0f;
+
+    // Start boss loop immediately at full volume
+    bossMusic.volume = 1f;
+    bossMusic.Play(); // looping track
+}
+
 
 
     public void ExitBoss()
     {
+        if (!inBoss) return;
+
+        inBoss = false;
         StartFade(FadeBossToMain());
     }
 
@@ -175,16 +256,11 @@ public class MusicManager : MonoBehaviour
     {
         float t = 0f;
 
-        float sm = spawnMusic.volume;
-        float sa = spawnAmbience.volume;
-
         float mm = mainMusic.volume;
         float ma = mainAmbience.volume;
-
         float ta = tribeA.volume;
         float tb = tribeB.volume;
         float tc = tribeC.volume;
-
         float bm = bossMusic.volume;
 
         while (t < fadeDuration)
@@ -192,39 +268,26 @@ public class MusicManager : MonoBehaviour
             t += Time.unscaledDeltaTime;
             float k = t / fadeDuration;
 
-            // 🔥 KILL SPAWN
-            spawnMusic.volume = Mathf.Lerp(sm, 0f, k);
-            spawnAmbience.volume = Mathf.Lerp(sa, 0f, k);
-
-            // 🔥 KILL MAIN
             mainMusic.volume = Mathf.Lerp(mm, 0f, k);
             mainAmbience.volume = Mathf.Lerp(ma, 0f, k);
 
-            // 🔥 KILL TRIBES
             tribeA.volume = Mathf.Lerp(ta, 0f, k);
             tribeB.volume = Mathf.Lerp(tb, 0f, k);
             tribeC.volume = Mathf.Lerp(tc, 0f, k);
 
-            // 🔥 BRING BOSS
             bossMusic.volume = Mathf.Lerp(bm, 1f, k);
 
             yield return null;
         }
 
-        // SNAP FINAL
-        spawnMusic.volume = 0f;
-        spawnAmbience.volume = 0f;
-
+        // 🔒 Boss owns everything
         mainMusic.volume = 0f;
         mainAmbience.volume = 0f;
-
         tribeA.volume = 0f;
         tribeB.volume = 0f;
         tribeC.volume = 0f;
-
         bossMusic.volume = 1f;
     }
-
 
     IEnumerator FadeBossToMain()
     {
@@ -238,7 +301,6 @@ public class MusicManager : MonoBehaviour
             float k = t / fadeDuration;
 
             bossMusic.volume = Mathf.Lerp(bm, 0f, k);
-
             mainMusic.volume = Mathf.Lerp(0f, MAIN_FULL, k);
             mainAmbience.volume = Mathf.Lerp(0f, AMBIENCE, k);
 
@@ -250,10 +312,13 @@ public class MusicManager : MonoBehaviour
         mainAmbience.volume = AMBIENCE;
     }
 
-
     // ================= FADE CONTROL =================
-    void StartFade(IEnumerator routine)
+
+    void StartFade(IEnumerator routine, bool isSpawnFade = false)
     {
+        if (spawnFadeInProgress && !isSpawnFade)
+            return;
+
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
 
