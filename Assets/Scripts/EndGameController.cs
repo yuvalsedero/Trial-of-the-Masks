@@ -6,8 +6,8 @@ public class EndGameController : MonoBehaviour
 {
     public CanvasGroup endImage;
     public float fadeInDuration = 1.5f;
-    public float waitBeforeInput = 5f;
-
+    public float waitBeforeInput = 3f;
+    public FlashingText restartText;
     bool canRestart = false;
 
     void Start()
@@ -30,8 +30,13 @@ public class EndGameController : MonoBehaviour
 
         // Wait before allowing input
         yield return new WaitForSeconds(waitBeforeInput);
+
         canRestart = true;
+
+        // 🔔 START FLASHING TEXT
+        restartText.StartFlashing();
     }
+
 
     void Update()
     {
@@ -40,7 +45,7 @@ public class EndGameController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) || Input.anyKeyDown)
         {
-            SceneManager.LoadScene("GameScene"); // 👈 your main scene
+            SceneManager.LoadScene("Menu"); // 👈 your main scene
         }
     }
 }

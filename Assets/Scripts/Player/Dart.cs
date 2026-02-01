@@ -45,6 +45,9 @@ public class Dart : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Projectile"))
+            return;
+
         IDamageable enemy = other.GetComponentInParent<IDamageable>();
         if (enemy == null)
         {

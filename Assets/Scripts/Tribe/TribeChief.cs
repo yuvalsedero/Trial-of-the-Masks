@@ -8,7 +8,7 @@ public class TribeChief : MonoBehaviour, IInteractable
     [Header("Mask Pedestals")]
     public GameObject[] pedestalPrefabs;
     public Transform[] pedestalSpawnPoints;
-
+    public DialogVoiceSet voiceSet;
     private readonly List<MaskPedestal> spawnedPedestals = new();
 
     enum ChiefState
@@ -42,6 +42,7 @@ public class TribeChief : MonoBehaviour, IInteractable
 
     void StartConversation()
     {
+        DialogManager.Instance.SetVoice(voiceSet);
         DialogManager.Instance.OpenDialog(
             dialogData.genericLines,
             SpawnPedestals

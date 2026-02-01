@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &475960765710712635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7966380926001590531}
+  m_Layer: 7
+  m_Name: feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7966380926001590531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475960765710712635}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4617591683687616730}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5620206781052210858
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,10 +44,11 @@ GameObject:
   - component: {fileID: 1751748763818216619}
   - component: {fileID: 7167885381118890235}
   - component: {fileID: 1249770011867477877}
-  - component: {fileID: 6179381898687812456}
   - component: {fileID: 995219179900168673}
+  - component: {fileID: 2590036503671972116}
   - component: {fileID: 4222608486707365643}
   - component: {fileID: 6314697530071522695}
+  - component: {fileID: 2133834228826662691}
   m_Layer: 7
   m_Name: Boar
   m_TagString: Untagged
@@ -36,7 +68,8 @@ Transform:
   m_LocalPosition: {x: 3.57, y: 2.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7966380926001590531}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7879393636539238236
@@ -85,7 +118,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 560460489
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3232954995629961432, guid: 25f798d8bf6f90940bff2e523ee08eca, type: 3}
@@ -454,19 +487,6 @@ MonoBehaviour:
   chargeSounds:
   - {fileID: 8300000, guid: d9c77cda5f136e64a94d2d608558f6db, type: 3}
   - {fileID: 8300000, guid: 6adda898949136c4bad4e5254b25d88c, type: 3}
---- !u!114 &6179381898687812456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5620206781052210858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c5609958d9a5ec4daf584c957340b15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
-  damage: 1
 --- !u!114 &995219179900168673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,11 +506,26 @@ MonoBehaviour:
   meatSprites:
   - {fileID: 21300000, guid: 7221c52612d7bbf4f9a8c59d82049485, type: 3}
   - {fileID: 21300000, guid: e400da67a5f493a46a253edaff03f9e4, type: 3}
+  - {fileID: 21300000, guid: 4fc179183a25a204cae1ec14665764cc, type: 3}
   hitSounds:
   - {fileID: 8300000, guid: af0ab1a396ef76040bb2b15cb8035545, type: 3}
   - {fileID: 8300000, guid: b893b86a2474a5148858b852ee924105, type: 3}
   deathSounds:
   - {fileID: 8300000, guid: 2f8b758491c4b244182caea92143fba9, type: 3}
+--- !u!114 &2590036503671972116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620206781052210858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a367e280767e76643bd26abd3dba4091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ContactDamage2D
+  damage: 1
+  damageCooldown: 0.5
 --- !u!95 &4222608486707365643
 Animator:
   serializedVersion: 7
@@ -610,3 +645,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2133834228826662691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620206781052210858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4079d19afe24c864bbc283c70bd3d819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
+  sortPoint: {fileID: 7966380926001590531}
+  offset: 0
+  multiplier: 100

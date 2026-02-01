@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class DialogManager : MonoBehaviour
 {
     public static DialogManager Instance;
-
+    DialogVoiceSet currentVoice;
     public GameObject dialogCanvas;
     public TextMeshProUGUI dialogText;
     public float typingSpeed = 0.03f;
@@ -42,7 +42,29 @@ public class DialogManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
             CloseDialog();
     }
+    public void SetVoice(DialogVoiceSet voiceSet)
+    {
+        currentVoice = voiceSet;
 
+        if (currentVoice != null)
+            lineSounds = currentVoice.clips;
+    }
+    void StopVoice()
+    {
+        if (voiceSource != null && voiceSource.isPlaying)
+            voiceSource.Stop();
+    }
+    void PlayVoice()
+    {
+        if (voiceSource == null || lineSounds == null || lineSounds.Length == 0)
+            return;
+
+        AudioClip clip = lineSounds[Random.Range(0, lineSounds.Length)];
+        voiceSource.clip = clip;
+        voiceSource.loop = true;   // keep talking while typing
+        voiceSource.pitch = Random.Range(0.95f, 1.05f); // optional polish
+        voiceSource.Play();
+    }
     public void OpenDialog(List<string> dialogLines, System.Action onFinish)
     {
         if (isOpen)
@@ -77,10 +99,10 @@ public class DialogManager : MonoBehaviour
         {
             StopCoroutine(typingCoroutine);
             dialogText.text = currentLine;
+            StopVoice(); // 🔇 stop talking immediately
             isTyping = false;
             return;
         }
-
         if (lines.Count == 0)
         {
             CloseDialog();
@@ -100,17 +122,21 @@ public class DialogManager : MonoBehaviour
         isTyping = true;
         dialogText.text = "";
 
+        PlayVoice(); // 🔊 START GIBBERISH
+
         foreach (char c in line)
         {
             dialogText.text += c;
             yield return new WaitForSecondsRealtime(typingSpeed);
         }
 
+        StopVoice(); // 🔇 STOP GIBBERISH
         isTyping = false;
     }
 
     void CloseDialog()
     {
+        StopVoice();
         dialogCanvas.SetActive(false);
         Time.timeScale = 1f;
 

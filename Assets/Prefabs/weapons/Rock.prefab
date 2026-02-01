@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8668209943313807802}
   m_Layer: 0
   m_Name: Rock
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   damage: 1
   speed: 5
   lifeTime: 5
+  spinSpeed: 360
 --- !u!50 &3322393006038997835
 Rigidbody2D:
   serializedVersion: 5

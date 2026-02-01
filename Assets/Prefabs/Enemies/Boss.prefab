@@ -17,8 +17,10 @@ GameObject:
   - component: {fileID: 3589439566793867145}
   - component: {fileID: 6761768167499114685}
   - component: {fileID: 2176803446136880587}
+  - component: {fileID: 5836709110186133956}
   - component: {fileID: 4704027475380378625}
   - component: {fileID: -3524080315576009855}
+  - component: {fileID: 7668988286968537107}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -41,6 +43,7 @@ Transform:
   m_Children:
   - {fileID: 6967435190199499379}
   - {fileID: 3896834027813652341}
+  - {fileID: 8063725788320400154}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4076548990791715941
@@ -254,10 +257,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9392753965ef8004daecf2305ff9297f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BearBossController
-  throwIntervalPhase1: 4
+  throwIntervalPhase1: 3
   summonIntervalPhase1: 8
   throwIntervalPhase2: 2
   summonIntervalPhase2: 4
+--- !u!114 &5836709110186133956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872595057639113051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a367e280767e76643bd26abd3dba4091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ContactDamage2D
+  damage: 1
+  damageCooldown: 0.5
 --- !u!95 &4704027475380378625
 Animator:
   serializedVersion: 7
@@ -377,6 +394,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7668988286968537107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872595057639113051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4079d19afe24c864bbc283c70bd3d819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
+  sortPoint: {fileID: 8063725788320400154}
+  offset: 0
+  multiplier: 100
 --- !u!1 &1380268694085471221
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +532,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3896834027813652341}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4021079456161586136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8063725788320400154}
+  m_Layer: 7
+  m_Name: feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8063725788320400154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4021079456161586136}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9131608786384374045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5600049015076316641
 GameObject:

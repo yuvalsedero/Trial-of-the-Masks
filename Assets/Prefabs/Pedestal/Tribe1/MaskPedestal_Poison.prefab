@@ -64,6 +64,46 @@ PrefabInstance:
       propertyPath: m_text
       value: Poison
       objectReference: {fileID: 0}
+    - target: {fileID: 3960885822329668002, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: m_fontSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960885822329668002, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960885822329668002, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960885822329668002, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960885822329668002, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960885822329668002, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960885822329668002, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: checkPaddingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960885822329668002, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960885822329668002, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: m_overrideHtmlColors
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960885822329668002, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4583417893679375542, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
       propertyPath: m_Name
       value: MaskPedestal_Poison
@@ -71,7 +111,7 @@ PrefabInstance:
     - target: {fileID: 4772949972652665269, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1493246080935583262, guid: eb8f246cd2697ed4f870e30823e1d9b9, type: 3}
+      objectReference: {fileID: -6349296538101697551, guid: 4457a36d7f1b3ea4cb410617e0643bd4, type: 3}
     - target: {fileID: 4772949972652665269, guid: 8830cedba8b438c46ad7bcf65908b0a0, type: 3}
       propertyPath: m_Color.b
       value: 1

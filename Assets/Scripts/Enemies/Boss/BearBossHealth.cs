@@ -4,8 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class BearBossHealth : MonoBehaviour, IDamageable
 {
+    bool isDead = false;
+
     public int maxHealth = 40;
-    int currentHealth;
+    public int currentHealth;
 
     [Header("Hit Flash")]
     public float flashTime = 0.1f;
@@ -43,6 +45,9 @@ public class BearBossHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(int amount, Vector2 hitDir)
     {
+        if (isDead)
+            return;
+
         currentHealth -= amount;
 
         Flash();
@@ -109,24 +114,56 @@ public class BearBossHealth : MonoBehaviour, IDamageable
     {
         return transform;
     }
-
     void Die()
     {
+        if (isDead)
+            return;
+
+        isDead = true;
+
         Debug.Log("Boss defeated");
 
-        Destroy(gameObject);
-        // Play death sound independently
+        // 🔒 FREEZE PHYSICS COMPLETELY
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.simulated = false; // 🚨 THIS STOPS ALL PHYSICS
+        }
+
+        // 🔒 Disable ALL colliders
+        foreach (Collider2D c in GetComponentsInChildren<Collider2D>())
+            c.enabled = false;
+
+        // 🔒 Disable ALL scripts except this one
+        foreach (MonoBehaviour mb in GetComponents<MonoBehaviour>())
+        {
+            if (mb != this)
+                mb.enabled = false;
+        }
+
+        // 👻 Hide visually
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+            sr.enabled = false;
+
+        // 🔊 Play death sound
         if (deathSound != null)
         {
             GameObject tempAudio = new GameObject("BossDeathAudio");
             AudioSource aSource = tempAudio.AddComponent<AudioSource>();
             aSource.clip = deathSound;
             aSource.Play();
-            Destroy(tempAudio, deathSound.length); // cleanup
+            Destroy(tempAudio, deathSound.length);
         }
+
+        // 🎬 Transition
         ScreenFade.Instance.FadeOut(() =>
         {
-            SceneManager.LoadScene("EndGameScene");
+            GameManager.Instance.LoadSceneAfterDelay("EndGameScene", 0f);
         });
     }
+
+
 }

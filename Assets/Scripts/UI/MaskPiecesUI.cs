@@ -3,18 +3,17 @@ using UnityEngine.UI;
 
 public class MaskPiecesUI : MonoBehaviour
 {
-    [Header("Mask Piece Images (order matters)")]
-    public Image[] maskPieces; // size = 3
+    public Image[] pieces; // size = 3
+
+    public Color emptyColor = new Color(1f, 1f, 1f, 0.25f);
+    public Color filledColor = Color.white;
 
     void Start()
     {
-        // hide all at start
-        foreach (var img in maskPieces)
-            img.enabled = false;
-
-        // sync immediately (safe if loading mid-game)
+        // init from current state
         UpdateUI(MaskManager.Instance.maskPiecesCollected);
 
+        // listen to changes
         MaskManager.Instance.OnMaskPieceCollected += UpdateUI;
     }
 
@@ -26,9 +25,9 @@ public class MaskPiecesUI : MonoBehaviour
 
     void UpdateUI(int count)
     {
-        for (int i = 0; i < maskPieces.Length; i++)
+        for (int i = 0; i < pieces.Length; i++)
         {
-            maskPieces[i].enabled = i < count;
+            pieces[i].color = i < count ? filledColor : emptyColor;
         }
     }
 }

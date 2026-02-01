@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHearts = 3;
@@ -24,8 +24,8 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-if (audioSource == null)
-    audioSource = gameObject.AddComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         if (heartsUI != null)
             heartsUI.UpdateHearts();
@@ -52,10 +52,10 @@ if (audioSource == null)
         currentHearts -= amount;
         Flash();
         if (hitSounds != null && hitSounds.Length > 0)
-{
-    AudioClip clip = hitSounds[Random.Range(0, hitSounds.Length)];
-    audioSource.PlayOneShot(clip);
-}
+        {
+            AudioClip clip = hitSounds[Random.Range(0, hitSounds.Length)];
+            audioSource.PlayOneShot(clip);
+        }
 
         if (heartsUI != null)
             heartsUI.UpdateHearts();
@@ -90,22 +90,26 @@ if (audioSource == null)
         isInvincible = false;
     }
 
-void Die()
-{
-    Debug.Log("Player died!");
-
-    // Play random death sound using a temporary GameObject
-    if (deathSounds != null && deathSounds.Length > 0)
+    void Die()
     {
-        AudioClip clip = deathSounds[Random.Range(0, deathSounds.Length)];
-        GameObject tempAudio = new GameObject("TempDeathAudio");
-        AudioSource aSource = tempAudio.AddComponent<AudioSource>();
-        aSource.clip = clip;
-        aSource.Play();
-        Destroy(tempAudio, clip.length); // destroy after sound finishes
+        Debug.Log("Player died!");
+
+        // Play random death sound using a temporary GameObject
+        float delay = 0.5f;
+
+        if (deathSounds != null && deathSounds.Length > 0)
+        {
+            AudioClip clip = deathSounds[Random.Range(0, deathSounds.Length)];
+            GameObject tempAudio = new GameObject("TempDeathAudio");
+            AudioSource aSource = tempAudio.AddComponent<AudioSource>();
+            aSource.clip = clip;
+            aSource.Play();
+            delay = clip.length; // wait for sound
+            Destroy(tempAudio, clip.length);
+        }
+
+        gameObject.SetActive(false);
+        GameManager.Instance.PlayerDied();
     }
 
-    // Deactivate the player object
-    gameObject.SetActive(false);
-}
 }
