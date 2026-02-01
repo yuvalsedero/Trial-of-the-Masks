@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbd1bfcf46ae8843a84c6861ddc2191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BearMinionHealth
-  maxHealth: 4
+  maxHealth: 6
   flashTime: 0.1
   hitColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   hitSounds:

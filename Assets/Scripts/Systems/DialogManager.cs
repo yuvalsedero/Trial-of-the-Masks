@@ -20,6 +20,9 @@ public class DialogManager : MonoBehaviour
     string currentLine;
     Coroutine typingCoroutine;
 
+    public AudioSource voiceSource;
+    public AudioClip[] lineSounds;
+
     void Awake()
     {
         if (Instance == null)

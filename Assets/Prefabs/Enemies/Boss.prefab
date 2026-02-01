@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1390bb3401186cc46b1d3424788ece26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BearBossHealth
-  maxHealth: 180
+  maxHealth: 200
   flashTime: 0.1
   hitColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   hitSounds:

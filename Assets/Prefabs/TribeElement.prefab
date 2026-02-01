@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TribeElement
       objectReference: {fileID: 0}
+    - target: {fileID: 3677954909114849560, guid: d4a539344f0f583489760d47399b8427, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3755906231650864723, guid: d4a539344f0f583489760d47399b8427, type: 3}
       propertyPath: m_Sprite
       value: 

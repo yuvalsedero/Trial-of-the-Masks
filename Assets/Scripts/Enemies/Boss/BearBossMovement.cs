@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BearBossMovement : MonoBehaviour
 {
-    public float moveSpeed = 1.2f;
+    public float moveSpeed;
     Rigidbody2D rb;
 
     void Awake()
