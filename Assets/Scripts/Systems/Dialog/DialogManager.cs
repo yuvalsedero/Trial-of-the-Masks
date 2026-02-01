@@ -73,8 +73,6 @@ public class DialogManager : MonoBehaviour
 
         AudioClip clip = lineSounds[Random.Range(0, lineSounds.Length)];
         voiceSource.clip = clip;
-        voiceSource.loop = true;   // keep talking while typing
-        voiceSource.pitch = Random.Range(0.95f, 1.05f); // optional polish
         voiceSource.Play();
     }
     public void OpenDialog(List<string> dialogLines, System.Action onFinish)
