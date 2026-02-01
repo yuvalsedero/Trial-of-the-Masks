@@ -3,10 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public string MainScene = "MainScene"; // the name of your gameplay scene
 
-    public void OnBeginButton()
+    public string mainSceneName = "MainScene";
+    bool started = false;
+
+    void Update()
     {
-        SceneManager.LoadScene(MainScene);
+        if (started)
+            return;
+
+        // Any key, mouse button, or gamepad
+        if (Input.anyKeyDown || Input.GetMouseButtonDown(0))
+        {
+            started = true;
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(mainSceneName);
+        }
     }
+
 }
