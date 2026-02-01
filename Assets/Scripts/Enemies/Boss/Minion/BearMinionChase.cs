@@ -1,10 +1,15 @@
 using UnityEngine;
 
-public class BearMinionChase : MonoBehaviour
+public class BearMinionChase : MonoBehaviour, IDamageable
 {
     public float moveSpeed = 2.2f;
     public int contactDamage = 1;
     public float contactCooldown = 1f;
+
+    // --- Knockback (added) ---
+    public float knockbackForce = 6f;
+    bool allowKnockback;
+    float knockbackTimer;
 
     Transform player;
     Rigidbody2D rb;
@@ -24,6 +29,14 @@ public class BearMinionChase : MonoBehaviour
     {
         if (player == null)
             return;
+
+        // Knockback window timer
+        if (allowKnockback)
+        {
+            knockbackTimer -= Time.fixedDeltaTime;
+            if (knockbackTimer <= 0f)
+                allowKnockback = false;
+        }
 
         Vector2 dir = (player.position - transform.position).normalized;
         rb.linearVelocity = dir * moveSpeed;
@@ -53,5 +66,28 @@ public class BearMinionChase : MonoBehaviour
             health.TakeDamage(contactDamage);
 
         lastContactTime = Time.time;
+    }
+
+    // ---------------- KNOCKBACK (added) ----------------
+
+    public void AllowKnockback(float duration)
+    {
+        allowKnockback = true;
+        knockbackTimer = duration;
+    }
+
+    public void TakeDamage(int amount, Vector2 hitDirection)
+    {
+        AllowKnockback(0.08f);
+
+        if (allowKnockback)
+        {
+            rb.AddForce(hitDirection.normalized * knockbackForce, ForceMode2D.Impulse);
+        }
+    }
+
+    public Transform GetTransform()
+    {
+        return transform;
     }
 }
