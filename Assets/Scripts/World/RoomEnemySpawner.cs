@@ -5,12 +5,17 @@ public class RoomEnemySpawner : MonoBehaviour
     public GameObject boarPrefab;
     public GameObject monkeyPrefab;
 
+    [Header("Spawn Settings")]
     public float spawnRadius = 3f;
+    public float minDistanceFromPlayer = 2.5f;
+    public int maxSpawnAttempts = 20;
 
     private int aliveEnemies;
     private Vector2Int roomIndex;
     private bool isCleared = false;
     private bool hasSpawned = false;
+
+    private Transform player;
 
     void Awake()
     {
@@ -19,16 +24,17 @@ public class RoomEnemySpawner : MonoBehaviour
             Mathf.RoundToInt(pos.x / RoomManager.Instance.roomSize.x),
             Mathf.RoundToInt(pos.y / RoomManager.Instance.roomSize.y)
         );
+
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            player = playerObj.transform;
+        else
+            Debug.LogWarning("[RoomEnemySpawner] Player not found. Distance check disabled.");
     }
 
     public void SpawnEnemies()
     {
-        if (hasSpawned)
-            return;
-
-        hasSpawned = true;
-
-        if (isCleared)
+        if (hasSpawned || isCleared)
             return;
 
         if (!WorldMap.Rooms.ContainsKey(roomIndex))
@@ -43,6 +49,8 @@ public class RoomEnemySpawner : MonoBehaviour
         if (aliveEnemies <= 0)
             return;
 
+        hasSpawned = true;
+
         RoomManager.Instance.SetDoorsLocked(roomIndex, true);
 
         for (int i = 0; i < info.boarCount; i++)
@@ -52,7 +60,6 @@ public class RoomEnemySpawner : MonoBehaviour
             SpawnEnemy(monkeyPrefab);
     }
 
-
     void SpawnEnemy(GameObject prefab)
     {
         if (prefab == null)
@@ -61,13 +68,47 @@ public class RoomEnemySpawner : MonoBehaviour
             return;
         }
 
-        GameObject enemy = Instantiate(
-            prefab,
-            transform.position + (Vector3)Random.insideUnitCircle * spawnRadius,
-            Quaternion.identity
-        );
+        Vector3 spawnPos = Vector3.zero;
+        bool foundValidPosition = false;
 
-        // ✅ Works for both boars + monkeys if they share BoarHealth (they currently do in your project)
+        Vector2 roomSize = RoomManager.Instance.roomSize;
+        Vector3 roomCenter = transform.position;
+
+        for (int i = 0; i < maxSpawnAttempts; i++)
+        {
+            Vector2 randomOffset = Random.insideUnitCircle * spawnRadius;
+            Vector3 candidate = roomCenter + (Vector3)randomOffset;
+
+            // --- Check room bounds ---
+            bool insideRoom =
+                Mathf.Abs(candidate.x - roomCenter.x) <= roomSize.x * 0.5f &&
+                Mathf.Abs(candidate.y - roomCenter.y) <= roomSize.y * 0.5f;
+
+            if (!insideRoom)
+                continue;
+
+            // --- Check distance from player ---
+            if (player != null)
+            {
+                float distance = Vector2.Distance(candidate, player.position);
+                if (distance < minDistanceFromPlayer)
+                    continue;
+            }
+
+            spawnPos = candidate;
+            foundValidPosition = true;
+            break;
+        }
+
+        // Fallback if no valid position found
+        if (!foundValidPosition)
+        {
+            spawnPos = roomCenter;
+            Debug.LogWarning("[RoomEnemySpawner] Could not find safe spawn position, using room center.");
+        }
+
+        GameObject enemy = Instantiate(prefab, spawnPos, Quaternion.identity);
+
         BoarHealth health = enemy.GetComponent<BoarHealth>();
         if (health != null)
             health.OnDeath += OnEnemyDied;
