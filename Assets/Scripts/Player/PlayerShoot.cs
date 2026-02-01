@@ -6,14 +6,17 @@ public class PlayerShoot : MonoBehaviour
     public float fireCooldown = 0.3f;
     public float doubleShotAngle = 15f;
 
+    [Header("Pause Control")]
+    public bool canShoot = true; // <-- toggle from PauseManager
+
     private Animator animator;
     private PlayerFacing facing;
     private float lastFireTime;
     private Vector2 shootDirection;
     private Rigidbody2D rb;
 
-    public AudioClip[] shootSounds; // add as many as you want in Inspector
-private AudioSource audioSource;
+    public AudioClip[] shootSounds;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -21,12 +24,18 @@ private AudioSource audioSource;
         facing = GetComponent<PlayerFacing>();
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
-if (audioSource == null)
-    audioSource = gameObject.AddComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
     {
+        if (!canShoot) // <-- skip shooting while paused
+        {
+            shootDirection = Vector2.zero;
+            return;
+        }
+
         ReadShootInput();
         HandleShooting();
     }
@@ -63,12 +72,12 @@ if (audioSource == null)
             facing.LockFacingForShot(direction.x);
 
         animator.SetTrigger("Attack");
-        
+
         if (shootSounds != null && shootSounds.Length > 0)
-{
-    AudioClip clip = shootSounds[Random.Range(0, shootSounds.Length)];
-    audioSource.PlayOneShot(clip);
-}
+        {
+            AudioClip clip = shootSounds[Random.Range(0, shootSounds.Length)];
+            audioSource.PlayOneShot(clip);
+        }
 
         if (MaskManager.Instance.DartEffect == MaskEffectType.DoubleShot)
         {
@@ -88,17 +97,15 @@ if (audioSource == null)
     void FireDouble(Vector2 direction)
     {
         Vector2 perp = Vector2.Perpendicular(direction).normalized;
-        float offset = 0.15f; // distance between the two darts
+        float offset = 0.15f;
 
         SpawnDartFromOffset(direction, perp * offset);
         SpawnDartFromOffset(direction, -perp * offset);
     }
+
     void SpawnDartFromOffset(Vector2 direction, Vector2 offset)
     {
-        Vector3 spawnPos =
-            transform.position +
-            (Vector3)(direction.normalized * 0.6f) +
-            (Vector3)offset;
+        Vector3 spawnPos = transform.position + (Vector3)(direction.normalized * 0.6f) + (Vector3)offset;
 
         GameObject dartObj = Instantiate(dartPrefab, spawnPos, Quaternion.identity);
         Dart dart = dartObj.GetComponent<Dart>();
@@ -106,9 +113,8 @@ if (audioSource == null)
         dart.InitFromMask();
         var stats = GetComponent<PlayerCombatStats>();
         if (stats != null)
-        {
             dart.damage += stats.bonusDamage;
-        }
+
         Vector2 inheritedVelocity = rb.linearVelocity;
         dart.Fire(direction, inheritedVelocity);
     }
@@ -123,9 +129,8 @@ if (audioSource == null)
         dart.InitFromMask();
         var stats = GetComponent<PlayerCombatStats>();
         if (stats != null)
-        {
             dart.damage += stats.bonusDamage;
-        }
+
         Vector2 inheritedVelocity = rb.linearVelocity;
         dart.Fire(direction, inheritedVelocity);
     }

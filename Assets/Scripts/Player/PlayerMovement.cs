@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
+    public bool canMove = true; // <-- add this for PauseManager control
 
     private Animator animator;
     private Rigidbody2D rb;
@@ -15,12 +16,21 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         facing = GetComponent<PlayerFacing>();
     }
+
     public void IncreaseSpeed(float amount)
     {
         speed += amount;
     }
+
     void Update()
     {
+        if (!canMove) // <-- skip input while paused
+        {
+            moveInput = Vector2.zero;
+            animator.SetBool("isMoving", false);
+            return;
+        }
+
         moveInput = Vector2.zero;
 
         if (Input.GetKey(KeyCode.W))
@@ -45,6 +55,12 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!canMove) // <-- skip physics while paused
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         rb.linearVelocity = moveInput * speed;
     }
 }
