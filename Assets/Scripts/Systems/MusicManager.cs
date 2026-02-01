@@ -106,9 +106,6 @@ public class MusicManager : MonoBehaviour
     // ================= TRIBES =================
     public void EnterTribe(TribeType tribe)
     {
-        if (!hasLeftSpawn || spawnFadeInProgress)
-            return;
-
         StartFade(FadeToTribe(tribe));
     }
 

@@ -9,16 +9,16 @@ public class TribeChief : MonoBehaviour, IInteractable
     public GameObject[] pedestalPrefabs;
     public Transform[] pedestalSpawnPoints;
 
-    private readonly List<MaskPedestal> spawnedPedestals = new List<MaskPedestal>();
+    private readonly List<MaskPedestal> spawnedPedestals = new();
 
     enum ChiefState
     {
-        BeforeGeneric,
+        NotStarted,
         PedestalsSpawned,
         Completed
     }
 
-    private ChiefState state = ChiefState.BeforeGeneric;
+    private ChiefState state = ChiefState.NotStarted;
 
     public void Interact()
     {
@@ -27,7 +27,7 @@ public class TribeChief : MonoBehaviour, IInteractable
 
         switch (state)
         {
-            case ChiefState.BeforeGeneric:
+            case ChiefState.NotStarted:
                 StartConversation();
                 break;
 
@@ -40,45 +40,20 @@ public class TribeChief : MonoBehaviour, IInteractable
         }
     }
 
-    // ---------- CONVERSATION FLOW ----------
-
     void StartConversation()
     {
         DialogManager.Instance.OpenDialog(
             dialogData.genericLines,
-            AfterConversationEnds
+            SpawnPedestals
         );
-
-        // decide branch WHILE dialog is still open
-        if (PlayerInventory.Instance.MeatCount < dialogData.meatRequired)
-        {
-            DialogManager.Instance.AppendLines(
-                dialogData.notEnoughLines
-            );
-        }
-        else
-        {
-            DialogManager.Instance.AppendLines(
-                dialogData.enoughLines
-            );
-        }
-    }
-
-    // ---------- AFTER FINAL LINE ----------
-
-    void AfterConversationEnds()
-    {
-        if (PlayerInventory.Instance.MeatCount < dialogData.meatRequired)
-            return;
-
-        SpawnPedestals();
     }
 
     void SpawnPedestals()
     {
-        state = ChiefState.PedestalsSpawned;
+        if (state != ChiefState.NotStarted)
+            return;
 
-        PlayerInventory.Instance.SpendMeat(dialogData.meatRequired);
+        state = ChiefState.PedestalsSpawned;
 
         int count = Mathf.Min(pedestalPrefabs.Length, pedestalSpawnPoints.Length);
 
@@ -96,8 +71,6 @@ public class TribeChief : MonoBehaviour, IInteractable
             spawnedPedestals.Add(pedestal);
         }
     }
-
-    // ---------- MASK CHOSEN ----------
 
     public void OnMaskChosen(MaskPedestal chosen)
     {

@@ -85,6 +85,7 @@ public class BearBossHealth : MonoBehaviour, IDamageable
     {
         Debug.Log("Boss defeated");
 
+        Destroy(gameObject);
         // Play death sound independently
         if (deathSound != null)
         {
@@ -98,6 +99,5 @@ public class BearBossHealth : MonoBehaviour, IDamageable
            {
                SceneManager.LoadScene("EndGameScene");
            });
-        Destroy(gameObject);
     }
 }

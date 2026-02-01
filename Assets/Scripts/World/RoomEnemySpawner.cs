@@ -10,6 +10,7 @@ public class RoomEnemySpawner : MonoBehaviour
     private int aliveEnemies;
     private Vector2Int roomIndex;
     private bool isCleared = false;
+    private bool hasSpawned = false;
 
     void Awake()
     {
@@ -22,31 +23,35 @@ public class RoomEnemySpawner : MonoBehaviour
 
     public void SpawnEnemies()
     {
+        if (hasSpawned)
+            return;
+
+        hasSpawned = true;
+
         if (isCleared)
             return;
 
-        if (!WorldMap.Rooms.TryGetValue(roomIndex, out RoomInfo info))
+        if (!WorldMap.Rooms.ContainsKey(roomIndex))
             return;
 
+        RoomInfo info = WorldMap.Rooms[roomIndex];
         if (info.roomType != RoomType.Enemy)
             return;
 
-        // ✅ USE YOUR MAP NUMBERS DIRECTLY
-        int boars = info.boarCount;
-        int monkeys = info.monkeyCount;
+        aliveEnemies = info.boarCount + info.monkeyCount;
 
-        aliveEnemies = boars + monkeys;
         if (aliveEnemies <= 0)
             return;
 
         RoomManager.Instance.SetDoorsLocked(roomIndex, true);
 
-        for (int i = 0; i < boars; i++)
+        for (int i = 0; i < info.boarCount; i++)
             SpawnEnemy(boarPrefab);
 
-        for (int i = 0; i < monkeys; i++)
+        for (int i = 0; i < info.monkeyCount; i++)
             SpawnEnemy(monkeyPrefab);
     }
+
 
     void SpawnEnemy(GameObject prefab)
     {

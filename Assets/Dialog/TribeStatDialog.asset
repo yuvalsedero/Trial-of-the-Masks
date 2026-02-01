@@ -13,16 +13,9 @@ MonoBehaviour:
   m_Name: TribeStatDialog
   m_EditorClassIdentifier: Assembly-CSharp::TribeDialogData
   tribeType: 2
-  meatRequired: 4
   genericLines:
   - So you wish to empower your body?
   - first show us how powerful your body already is!
   - Show us what you can do by help our tribe.
-  enoughLines:
-  - You have enough meat for us all!
-  - Thank you, pebble.
-  notEnoughLines:
-  - You dont have enough meat to feed us all, disappointing.
-  - We need more pieces of meat to perform the CEREMONY
   completedLines:
   - Go forth and retrieve the remaining pieces of the MASK.

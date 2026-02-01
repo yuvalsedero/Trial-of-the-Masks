@@ -31,7 +31,6 @@ public class RoomManager : MonoBehaviour
 
     private bool isTransitioning = false;
     public bool IsTransitioning => isTransitioning;
-
     void Awake()
     {
         if (Instance == null)
