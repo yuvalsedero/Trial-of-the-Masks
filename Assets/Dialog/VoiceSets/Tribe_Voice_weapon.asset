@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Tribe_Voice_weapon
   m_EditorClassIdentifier: Assembly-CSharp::DialogVoiceSet
   clips:
-  - {fileID: 8300000, guid: a9d9d9f4c2740c04d9bab5270cec79cd, type: 3}
-  - {fileID: 8300000, guid: 2656a3cabea1e1449be4ea56f663bd01, type: 3}
-  - {fileID: 8300000, guid: a6fe8868d8fdd184c8324adc6ee8b389, type: 3}
-  - {fileID: 8300000, guid: df701f25748be5842b9667ccba368d5a, type: 3}
-  - {fileID: 8300000, guid: bd0db8c273f75114fb5b6de243df1b65, type: 3}
-  - {fileID: 8300000, guid: f31ef72f7d1653343a861138da3eb1c7, type: 3}
-  - {fileID: 8300000, guid: 198f695572825b54f9c253f016f85fae, type: 3}
-  - {fileID: 8300000, guid: 9102d0b084baa9b4f84582409c469040, type: 3}
-  - {fileID: 8300000, guid: 2a04339d179ec3d4e8bbb74832088512, type: 3}
+  - {fileID: 8300000, guid: 3706015cc0132fb4cbbf062b355ed0e3, type: 3}
+  - {fileID: 8300000, guid: c787d4c0bbbddd24fafdf6ca6c1dac9f, type: 3}
+  - {fileID: 8300000, guid: a518417f7ff4976439852ebf45bf55e4, type: 3}
+  - {fileID: 8300000, guid: 2383407ab70201e49a2f6c48a110262c, type: 3}
+  - {fileID: 8300000, guid: b371ca03f5839624890990e42630366c, type: 3}
+  - {fileID: 8300000, guid: 2f38d37755023ed4298b06580efd65ac, type: 3}
+  - {fileID: 8300000, guid: 32edff4bb85334f40a5d341b32ffcafa, type: 3}
+  - {fileID: 8300000, guid: e73dae10af4d0d843ba414d3eb8bdfd1, type: 3}

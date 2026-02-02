@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: effectType
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 563757053476735505, guid: aa7863b16accaf948a6872de9ebf9615, type: 3}
+      propertyPath: deathLoopSound
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2985026775208513523, guid: aa7863b16accaf948a6872de9ebf9615, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -55,6 +59,10 @@ PrefabInstance:
     - target: {fileID: 2985026775208513523, guid: aa7863b16accaf948a6872de9ebf9615, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339183007045788397, guid: aa7863b16accaf948a6872de9ebf9615, type: 3}
+      propertyPath: m_text
+      value: Heal
       objectReference: {fileID: 0}
     - target: {fileID: 4583417893679375542, guid: aa7863b16accaf948a6872de9ebf9615, type: 3}
       propertyPath: m_Name

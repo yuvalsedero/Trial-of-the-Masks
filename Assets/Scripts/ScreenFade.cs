@@ -6,7 +6,7 @@ public class ScreenFade : MonoBehaviour
     public static ScreenFade Instance;
 
     public CanvasGroup fadeGroup;
-    public float fadeDuration = 1.5f;
+    public float fadeDuration = 3f;
 
     void Awake()
     {

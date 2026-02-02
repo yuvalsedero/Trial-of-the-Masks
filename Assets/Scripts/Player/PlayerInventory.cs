@@ -5,6 +5,10 @@ public class PlayerInventory : MonoBehaviour
     public static PlayerInventory Instance;
     public MeatUI meatUI;
 
+    [Header("Audio")]
+    public AudioClip[] meatPickupSounds;
+    private AudioSource audioSource;
+
     [SerializeField] private int meatCount = 0;
 
     private void Awake()
@@ -12,7 +16,14 @@ public class PlayerInventory : MonoBehaviour
         if (Instance == null)
             Instance = this;
         else
+        {
             Destroy(gameObject);
+            return;
+        }
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void Start()
@@ -25,10 +36,24 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddMeat(int amount)
     {
-        meatCount += Mathf.Max(0, amount);
+        if (amount <= 0)
+            return;
+
+        meatCount += amount;
 
         if (meatUI != null)
             meatUI.UpdateMeat(meatCount);
+
+        PlayMeatPickupSound();
+    }
+
+    void PlayMeatPickupSound()
+    {
+        if (meatPickupSounds == null || meatPickupSounds.Length == 0)
+            return;
+
+        AudioClip clip = meatPickupSounds[Random.Range(0, meatPickupSounds.Length)];
+        audioSource.PlayOneShot(clip);
     }
 
     public bool SpendMeat(int amount)
@@ -44,6 +69,7 @@ public class PlayerInventory : MonoBehaviour
         Debug.Log($"Meat spent. Remaining: {meatCount}");
         return true;
     }
+
     public bool HasEnoughMeat(int amount)
     {
         return meatCount >= amount;

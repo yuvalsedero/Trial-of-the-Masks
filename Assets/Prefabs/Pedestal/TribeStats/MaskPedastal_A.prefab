@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaskPedestal
   effectType: 0
-  category: 0
+  category: 2
   ownerChief: {fileID: 0}
   deathLoopSound: {fileID: 8300000, guid: ed5db9f38903d5a4a83c45319d66ec68, type: 3}
   deathImpactSound: {fileID: 8300000, guid: ad3155d53fc542743a75bb616b8bdba4, type: 3}

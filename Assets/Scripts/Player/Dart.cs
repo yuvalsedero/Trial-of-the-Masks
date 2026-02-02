@@ -35,7 +35,8 @@ public class Dart : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         // 🔑 SNAPSHOT MASK STATE HERE
-        dartEffect = MaskManager.Instance.ElementalEffect;
+        // dartEffect = MaskManager.Instance.ElementalEffect;
+        dartEffect = MaskManager.Instance.DartEffect;
 
         piercing = dartEffect == MaskEffectType.Piercing;
         remainingBounces = dartEffect == MaskEffectType.Ricochet ? 1 : 0;

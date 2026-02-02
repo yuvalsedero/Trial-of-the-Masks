@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: TribeWeaponDialog
   m_EditorClassIdentifier: Assembly-CSharp::TribeDialogData
   tribeType: 1
-  meatCost: 10
+  meatCost: 12
   genericLines:
   - So the rumor was true..
-  - The great hunting powers Don't come easily,
+  - The great hunting powers don't come easily,
   - they are only given to the best hunters.
-  - If you Prove youself you we will teach you the way of the Blowdart
+  - If you prove youself you we will teach you the way of the blowdart.
   notEnoughMeatLines: []
   completedLines:
   - Go forth and retrieve the remaining pieces of the MASK.

@@ -5,6 +5,9 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance;
 
+    [Header("Main Menu")]
+public AudioSource mainMenuMusic; // Assign your menu track here
+
     [Header("Spawn")]
     public AudioSource spawnMusic;
     public AudioSource spawnAmbience;
@@ -36,13 +39,24 @@ public class MusicManager : MonoBehaviour
     Coroutine fadeCoroutine;
 
     void Awake()
+{
+    if (Instance == null)
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        Instance = this;
+        // This keeps the music playing when the scene changes
+        DontDestroyOnLoad(gameObject); 
     }
+    else
+    {
+        // If a MusicManager already exists, kill this new one
+        Destroy(gameObject);
+    }
+}
 
     void Start()
     {
+
+        
         spawnMusic.Play();
         spawnAmbience.Play();
 
@@ -55,7 +69,7 @@ public class MusicManager : MonoBehaviour
 
         bossMusic.Play();
 
-        spawnMusic.volume = 0.8f;
+        spawnMusic.volume = 0.7f;
         spawnAmbience.volume = 0.5f;
 
         mainMusic.volume = 0f;
@@ -241,7 +255,7 @@ public class MusicManager : MonoBehaviour
     yield return new WaitWhile(() => bossStinger.isPlaying);
 
     // 4️⃣ Start boss loop immediately at full volume
-    bossMusic.volume = 0.8f;
+    bossMusic.volume = 0.9f;
     bossMusic.Play(); // looping track
 }
 
@@ -289,7 +303,7 @@ public class MusicManager : MonoBehaviour
         tribeA.volume = 0f;
         tribeB.volume = 0f;
         tribeC.volume = 0f;
-        bossMusic.volume = 0.8f;
+        bossMusic.volume = 0.9f;
     }
 
     IEnumerator FadeBossToMain()
@@ -327,4 +341,53 @@ public class MusicManager : MonoBehaviour
 
         fadeCoroutine = StartCoroutine(routine);
     }
+
+    // Call this from EndGameController.cs using MusicManager.Instance.FadeOutAll();
+// Now accepts a duration argument
+public void FadeOutAll(float duration)
+{
+    if (fadeCoroutine != null)
+        StopCoroutine(fadeCoroutine);
+
+    fadeCoroutine = StartCoroutine(FadeEverythingToZero(duration));
+}
+
+IEnumerator FadeEverythingToZero(float duration)
+{
+    float t = 0f;
+    // Capture starting volumes
+    float sm = spawnMusic.volume;
+    float sa = spawnAmbience.volume;
+    float mm = mainMusic.volume;
+    float ma = mainAmbience.volume;
+    float ta = tribeA.volume;
+    float tb = tribeB.volume;
+    float tc = tribeC.volume;
+    float bm = bossMusic.volume;
+
+    while (t < duration)
+    {
+        t += Time.unscaledDeltaTime;
+        float k = t / duration;
+
+        spawnMusic.volume = Mathf.Lerp(sm, 0f, k);
+        spawnAmbience.volume = Mathf.Lerp(sa, 0f, k);
+        mainMusic.volume = Mathf.Lerp(mm, 0f, k);
+        mainAmbience.volume = Mathf.Lerp(ma, 0f, k);
+        tribeA.volume = Mathf.Lerp(ta, 0f, k);
+        tribeB.volume = Mathf.Lerp(tb, 0f, k);
+        tribeC.volume = Mathf.Lerp(tc, 0f, k);
+        bossMusic.volume = Mathf.Lerp(bm, 0f, k);
+
+        yield return null;
+    }
+
+    // Ensure they are all dead silent and stopped
+    AudioSource[] allSources = { spawnMusic, spawnAmbience, mainMusic, mainAmbience, tribeA, tribeB, tribeC, bossMusic };
+    foreach (var source in allSources)
+    {
+        source.volume = 0f;
+        source.Stop();
+    }
+}
 }

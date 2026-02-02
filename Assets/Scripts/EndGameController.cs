@@ -5,8 +5,8 @@ using System.Collections;
 public class EndGameController : MonoBehaviour
 {
     public CanvasGroup endImage;
-    public float fadeInDuration = 1.5f;
-    public float waitBeforeInput = 3f;
+    public float fadeInDuration = 3f;
+    public float waitBeforeInput = 5f;
     public FlashingText restartText;
     bool canRestart = false;
 
@@ -48,4 +48,19 @@ public class EndGameController : MonoBehaviour
             SceneManager.LoadScene("Menu"); // 👈 your main scene
         }
     }
+
+
+
+
+
+
+    IEnumerator RestartSequence()
+{
+    if (MusicManager.Instance != null)
+        MusicManager.Instance.FadeOutAll(3f);
+
+    yield return new WaitForSeconds(3f);
+
+    SceneManager.LoadScene("Menu");
+}
 }

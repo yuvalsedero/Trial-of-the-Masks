@@ -88,7 +88,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1038292565
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a8a513958740e4b4196220ed6e076f53, type: 3}
@@ -1186,6 +1186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 5
+  canMove: 1
 --- !u!114 &615264215049878042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1201,6 +1202,7 @@ MonoBehaviour:
   dartPrefab: {fileID: 8751889413324831728, guid: 3d8c9966cea2d1745a194b8532272428, type: 3}
   fireCooldown: 0.3
   doubleShotAngle: 15
+  canShoot: 1
   shootSounds:
   - {fileID: 8300000, guid: eca7198542828d0479b90394644e6119, type: 3}
   - {fileID: 8300000, guid: 9b864f0453c372a4686ad982fa9c8569, type: 3}
@@ -1243,6 +1245,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
   meatUI: {fileID: 0}
+  meatPickupSounds:
+  - {fileID: 8300000, guid: 51914e0fc58374248a0710c6b3a696ac, type: 3}
+  - {fileID: 8300000, guid: 80bab5f326f1d3b47a1e8fd22b20d67a, type: 3}
+  - {fileID: 8300000, guid: 85c58e98fc165fe4aade18509684f29a, type: 3}
   meatCount: 0
 --- !u!114 &1568039606510544069
 MonoBehaviour:

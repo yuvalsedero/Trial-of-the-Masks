@@ -3656,6 +3656,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChiefIndecator
       objectReference: {fileID: 0}
+    - target: {fileID: 2863814065235212537, guid: fc34fccd2a5ee374f9781ba4fea9245a, type: 3}
+      propertyPath: floatSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863814065235212537, guid: fc34fccd2a5ee374f9781ba4fea9245a, type: 3}
+      propertyPath: floatHeight
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 4455904459240918599, guid: fc34fccd2a5ee374f9781ba4fea9245a, type: 3}
       propertyPath: chief
       value: 
