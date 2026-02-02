@@ -55,8 +55,6 @@ MonoBehaviour:
   boarPrefab: {fileID: 5620206781052210858, guid: 675323ed1e07b984a9a628fb55b670ba, type: 3}
   monkeyPrefab: {fileID: 2527968441130893785, guid: 82b6dbaf15f0f5d4bbb489ff5f1d3973, type: 3}
   spawnRadius: 5
-  minDistanceFromPlayer: 7
-  maxSpawnAttempts: 20
 --- !u!1 &2093057879986045558
 GameObject:
   m_ObjectHideFlags: 0
