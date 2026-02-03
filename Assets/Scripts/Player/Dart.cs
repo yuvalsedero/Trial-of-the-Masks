@@ -82,7 +82,7 @@ if (dartEffect == MaskEffectType.Ice)
 {
     enemy.GetTransform()
          .GetComponent<EnemyStatus>()
-         ?.ApplyIceSlow(0f, 3f); // 👈 THIS NUMBER
+         ?.ApplyIceSlow(0f, 5f); // 👈 THIS NUMBER
 }
 
         if (piercing)

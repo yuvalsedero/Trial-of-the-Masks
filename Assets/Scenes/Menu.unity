@@ -858,7 +858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenFade
   fadeGroup: {fileID: 127054363}
-  fadeDuration: 1.5
+  fadeDuration: 4
 --- !u!1 &1464262430
 GameObject:
   m_ObjectHideFlags: 0

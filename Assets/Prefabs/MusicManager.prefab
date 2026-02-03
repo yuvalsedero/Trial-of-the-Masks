@@ -570,6 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4d940683cd1be44a83883c68fa58fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  mainMenuMusic: {fileID: 0}
   spawnMusic: {fileID: 34178686855199941}
   spawnAmbience: {fileID: 646505225864423123}
   mainMusic: {fileID: 6031350823626093934}
@@ -579,7 +580,7 @@ MonoBehaviour:
   tribeC: {fileID: 3905012036365985016}
   bossMusic: {fileID: 5382565129301027709}
   bossStinger: {fileID: 1798350305915660353}
-  fadeDuration: 1.5
+  fadeDuration: 2
 --- !u!1 &4434219380131735091
 GameObject:
   m_ObjectHideFlags: 0

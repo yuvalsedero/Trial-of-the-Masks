@@ -27,6 +27,29 @@ public class MenuMusic : MonoBehaviour
         }
     }
 
+            void Start()
+    {
+        StartCoroutine(FadeInAudio());
+    }
+
+    IEnumerator FadeInAudio()
+    {
+        float duration = 5f;
+        float t = 0f;
+
+        AudioListener.volume = 0f;
+
+        while (t < duration)
+        {
+            t += Time.unscaledDeltaTime;
+            AudioListener.volume = Mathf.Lerp(0f, 1f, t / duration);
+            yield return null;
+        }
+
+        AudioListener.volume = 1f;
+    }
+
+
     private void Update()
     {
         // Wait for any key press to start the fade

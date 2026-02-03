@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public YouDiedUI youDiedUI;
-    public float deathScreenTime = 2f;
+    public float deathScreenTime = 4f;
     void Awake()
     {
         if (Instance == null)
@@ -19,10 +19,31 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void PlayerDied()
-    {
-        StartCoroutine(PlayerDeathSequence());
-    }
+        public void PlayerDied()
+{
+    // Show YOU DIED UI first
+    if (youDiedUI != null)
+        youDiedUI.Show();
+
+    // Fade out music
+    if (MusicManager.Instance != null)
+        MusicManager.Instance.FadeOutAll(4f);
+
+    // Fade screen (optional, after showing UI)
+    if (ScreenFade.Instance != null)
+        ScreenFade.Instance.FadeOut();
+
+    // Restart after delay
+    StartCoroutine(RestartAfterDeath());
+}
+
+IEnumerator RestartAfterDeath()
+{
+    // wait for screen fade + music fade
+    yield return new WaitForSeconds(Mathf.Max(ScreenFade.Instance.fadeDuration, 4f));
+
+    UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+}
 
     IEnumerator PlayerDeathSequence()
     {
@@ -59,4 +80,21 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene("Menu");
     }
+
+
+    void OnEnable() 
+{
+    SceneManager.sceneLoaded += OnSceneLoaded;
+}
+
+void OnDisable() 
+{
+    SceneManager.sceneLoaded -= OnSceneLoaded;
+}
+
+void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+{
+    // This finds the script in the current Game scene automatically
+    youDiedUI = FindObjectOfType<YouDiedUI>();
+}
 }

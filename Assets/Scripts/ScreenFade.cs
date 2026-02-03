@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ScreenFade : MonoBehaviour
 {
@@ -46,4 +47,26 @@ public class ScreenFade : MonoBehaviour
         fadeGroup.alpha = to;
         onComplete?.Invoke();
     }
+    void OnEnable()
+{
+    // Subscribe to the sceneLoaded event
+    SceneManager.sceneLoaded += OnSceneLoaded;
+}
+
+void OnDisable()
+{
+    // Unsubscribe to prevent memory leaks
+    SceneManager.sceneLoaded -= OnSceneLoaded;
+}
+
+void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+{
+    // Reset the alpha so the player can see the new scene
+    if (fadeGroup != null)
+    {
+        fadeGroup.alpha = 0f; 
+        // Or call FadeIn() here if you want a smooth transition every time
+    }
+}
+    
 }
