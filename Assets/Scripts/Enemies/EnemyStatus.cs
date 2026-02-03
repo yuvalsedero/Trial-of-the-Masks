@@ -35,13 +35,24 @@ public class EnemyStatus : MonoBehaviour
     }
 
     IEnumerator IceRoutine(float m, float d)
+{
+    slowed = true;
+
+    if (m == 0f && chase != null)
     {
-        slowed = true;
-        chase.ModifySpeed(m);
-        yield return new WaitForSeconds(d);
-        chase.ModifySpeed(1f);
-        slowed = false;
+        chase.FreezeForSeconds(d); // this handles physics, AI, and animation freeze
     }
+    else
+    {
+        chase.ModifySpeed(m);
+    }
+
+    yield return new WaitForSeconds(d);
+
+    slowed = false;
+}
+
+
 
     // ☠ POISON
     public void ApplyPoison(int damage, float duration, float tickRate)

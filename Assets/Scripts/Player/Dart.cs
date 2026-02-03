@@ -76,7 +76,14 @@ public class Dart : MonoBehaviour
         lastHitEnemy = enemy;
 
         enemy.TakeDamage(damage, rb.linearVelocity);
-        SpawnHitFlash(other);
+SpawnHitFlash(other);
+
+if (dartEffect == MaskEffectType.Ice)
+{
+    enemy.GetTransform()
+         .GetComponent<EnemyStatus>()
+         ?.ApplyIceSlow(0f, 3f); // 👈 THIS NUMBER
+}
 
         if (piercing)
             return;

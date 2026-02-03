@@ -483,7 +483,9 @@ MonoBehaviour:
   maxChargeInterval: 3
   separationRadius: 1.2
   separationStrength: 1.5
+  freezeColor: {r: 0.6, g: 0.85, b: 1, a: 1}
   chargeColor: {r: 0.9811321, g: 0.48593804, b: 0.5028946, a: 1}
+  frozen: 0
   chargeSounds:
   - {fileID: 8300000, guid: d9c77cda5f136e64a94d2d608558f6db, type: 3}
   - {fileID: 8300000, guid: 6adda898949136c4bad4e5254b25d88c, type: 3}
@@ -499,7 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdfaaaa87a37cc54e91232d16960d8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 6
+  maxHealth: 3
   knockbackForce: 10
   flashTime: 0.1
   meatPickupPrefab: {fileID: 3512419587285750760, guid: a493be0b52500be4a8edfde400ea7c03, type: 3}

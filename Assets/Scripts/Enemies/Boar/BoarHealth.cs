@@ -73,9 +73,9 @@ public class BoarHealth : MonoBehaviour, IDamageable
 
         // ❄ ICE
         if (MaskManager.Instance.ElementalEffect == MaskEffectType.Ice)
-        {
-            GetComponent<BoarChase>()?.ApplySlow(0.5f, 3f);
-        }
+{
+    GetComponent<BoarChase>()?.FreezeForSeconds(2.5f); // full freeze including animation
+}
 
         // ☠ POISON (refresh, no stack)
         if (MaskManager.Instance.ElementalEffect == MaskEffectType.Poison)
@@ -156,14 +156,20 @@ public class BoarHealth : MonoBehaviour, IDamageable
     // ---------------- VISUAL ----------------
 
     void Flash()
-    {
-        if (sr == null) return;
+{
+    if (sr == null) return;
 
-        if (flashCoroutine != null)
-            StopCoroutine(flashCoroutine);
+    // ❌ Skip flashing if frozen
+    BoarChase chase = GetComponent<BoarChase>();
+    if (chase != null && chase.frozen)
+        return;
 
-        flashCoroutine = StartCoroutine(FlashCoroutine());
-    }
+    if (flashCoroutine != null)
+        StopCoroutine(flashCoroutine);
+
+    flashCoroutine = StartCoroutine(FlashCoroutine());
+}
+
 
     IEnumerator FlashCoroutine()
     {

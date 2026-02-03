@@ -20,12 +20,16 @@ public class BoarChase : MonoBehaviour
     public float separationRadius = 1.2f;
     public float separationStrength = 1.5f;
 
+    public Color freezeColor = new Color(0.6f, 0.85f, 1f); // light blue
     public Color chargeColor = new Color(1f, 0.7f, 0.25f);
+    private Color originalColor;
 
     Rigidbody2D rb;
     Transform player;
     SpriteRenderer sr;
     Color baseColor;
+
+    public bool frozen = false;
 
     float timer;
     float nextChargeTime;
@@ -45,13 +49,15 @@ public class BoarChase : MonoBehaviour
     BoarState state = BoarState.Run;
 
     void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
-        if (sr != null) baseColor = sr.color;
-        anim = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
-    }
+{
+    rb = GetComponent<Rigidbody2D>();
+    sr = GetComponent<SpriteRenderer>(); // ensure this is the visible sprite!
+    if (sr != null)
+        originalColor = sr.color;
+    anim = GetComponent<Animator>();
+    audioSource = GetComponent<AudioSource>();
+}
+
 
     void Start()
     {
@@ -62,41 +68,48 @@ public class BoarChase : MonoBehaviour
     }
 
     void Update()
+{
+    if (player == null || frozen) // ❌ skip all AI logic if frozen
+        return;
+
+    timer += Time.deltaTime;
+
+    switch (state)
     {
-        if (player == null)
-            return;
-
-        timer += Time.deltaTime;
-
-        switch (state)
-        {
-            case BoarState.Run:
-                if (Time.time - spawnTime < spawnChargeDelay)
-                    break;
-
-                if (timer >= nextChargeTime)
-                    EnterWindup();
+        case BoarState.Run:
+            if (Time.time - spawnTime < spawnChargeDelay)
                 break;
 
-            case BoarState.Windup:
-                if (timer >= windupTime)
-                    EnterCharge();
-                break;
+            if (timer >= nextChargeTime)
+                EnterWindup();
+            break;
 
-            case BoarState.Charge:
-                if (timer >= chargeTime)
-                    EnterRecovery();
-                break;
+        case BoarState.Windup:
+            if (timer >= windupTime)
+                EnterCharge();
+            break;
 
-            case BoarState.Recovery:
-                if (timer >= recoveryTime)
-                    EnterRun();
-                break;
-        }
+        case BoarState.Charge:
+            if (timer >= chargeTime)
+                EnterRecovery();
+            break;
+
+        case BoarState.Recovery:
+            if (timer >= recoveryTime)
+                EnterRun();
+            break;
     }
+}
+
 
     void FixedUpdate()
     {
+
+        if (player == null || frozen) // ❌ skip movement if frozen
+    {
+        rb.linearVelocity = Vector2.zero; // just in case
+        return;
+    }
         if (player == null)
             return;
 
@@ -110,6 +123,14 @@ public class BoarChase : MonoBehaviour
             knockbackGrace -= Time.fixedDeltaTime;
             return; // allow knockback to play out
         }
+
+         if (currentSpeed == 0f && state == BoarState.Charge)
+    {
+        state = BoarState.Run; // cancel charge if frozen
+        rb.linearVelocity = Vector2.zero; // stop movement
+    }
+
+    
         switch (state)
         {
             case BoarState.Run:
@@ -123,10 +144,50 @@ public class BoarChase : MonoBehaviour
                 break;
 
             case BoarState.Charge:
-                rb.linearVelocity = chargeDirection * chargeSpeed;
-                break;
+    if (currentSpeed == 0f)
+        rb.linearVelocity = Vector2.zero; // freeze
+    else
+        rb.linearVelocity = chargeDirection * chargeSpeed;
+    break;
+
         }
     }
+
+
+    public void FreezeForSeconds(float duration)
+{
+    StartCoroutine(FreezeRoutine(duration));
+}
+
+IEnumerator FreezeRoutine(float duration)
+{
+    frozen = true;
+
+    rb.linearVelocity = Vector2.zero;
+    rb.angularVelocity = 0f;
+    rb.isKinematic = true;
+
+    if (anim != null)
+        anim.enabled = false;
+
+    if (sr != null)
+        sr.color = freezeColor; // 🔹 turn blue
+
+    yield return new WaitForSeconds(duration);
+
+    rb.isKinematic = false;
+    if (anim != null)
+        anim.enabled = true;
+
+    frozen = false;
+
+    if (sr != null)
+        sr.color = originalColor; // restore normal color
+}
+
+
+
+
 
     void FacePlayer()
     {
@@ -210,15 +271,20 @@ public class BoarChase : MonoBehaviour
         nextChargeTime = Random.Range(minChargeInterval, maxChargeInterval);
     }
 
-    void SetChargeColor(bool charging)
-    {
-        if (sr != null)
-            sr.color = charging ? chargeColor : baseColor;
-    }
+   void SetChargeColor(bool charging)
+{
+    if (sr == null || frozen) return; // don't overwrite freeze color
+    sr.color = charging ? chargeColor : originalColor;
+}
+
     public void ModifySpeed(float multiplier)
-    {
-        currentSpeed = baseSpeed * Mathf.Clamp(multiplier, 0.1f, 1f);
-    }
+{
+    currentSpeed = baseSpeed * Mathf.Clamp(multiplier, 0f, 1f);
+    if (multiplier == 0f && anim != null)
+        anim.enabled = false; // freeze visuals
+    else if (anim != null)
+        anim.enabled = true;
+}
     Vector2 ComputeSeparation()
     {
         Vector2 separation = Vector2.zero;
