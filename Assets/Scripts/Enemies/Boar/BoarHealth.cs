@@ -74,7 +74,7 @@ public class BoarHealth : MonoBehaviour, IDamageable
         // ❄ ICE
         if (MaskManager.Instance.ElementalEffect == MaskEffectType.Ice)
 {
-    GetComponent<BoarChase>()?.FreezeForSeconds(2.5f); // full freeze including animation
+    GetComponent<BoarChase>()?.FreezeForSeconds(1.5f); // full freeze including animation
 }
 
         // ☠ POISON (refresh, no stack)

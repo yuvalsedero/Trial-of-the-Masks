@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 3700157085539505943}
   - component: {fileID: 1941804779761264485}
   - component: {fileID: 7075248339958130394}
+  - component: {fileID: -5526079372157005795}
   m_Layer: 0
   m_Name: Monkey
   m_TagString: Untagged
@@ -150,7 +151,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 560460489
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4757638458387860434, guid: 9a9f8245cbc422049a9e831e4fff474a, type: 3}
@@ -583,3 +584,29 @@ MonoBehaviour:
   sortPoint: {fileID: 8049395607304109938}
   offset: 0
   multiplier: 100
+--- !u!114 &-5526079372157005795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2527968441130893785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7916bd80e2e4ec04dace9dd8dfa2b0a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoarChase
+  baseSpeed: 0.5
+  spawnChargeDelay: 0.3
+  chargeSpeed: 0
+  windupTime: 0.6
+  chargeTime: 0.6
+  recoveryTime: 0.5
+  minChargeInterval: 3
+  maxChargeInterval: 5
+  separationRadius: 1.2
+  separationStrength: 1.5
+  freezeColor: {r: 0.6, g: 0.85, b: 1, a: 1}
+  chargeColor: {r: 1, g: 1, b: 1, a: 1}
+  frozen: 0
+  chargeSounds: []

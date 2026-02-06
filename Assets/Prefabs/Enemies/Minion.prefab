@@ -43,11 +43,11 @@ GameObject:
   - component: {fileID: 7932242828896890519}
   - component: {fileID: 6218588685059446452}
   - component: {fileID: 6953774584534033141}
-  - component: {fileID: 7484316309201671870}
-  - component: {fileID: 8245959989768094105}
   - component: {fileID: 4172954189405405670}
   - component: {fileID: -2438649802135028821}
   - component: {fileID: 2702439594280631931}
+  - component: {fileID: 2268994246744828953}
+  - component: {fileID: 990900059223543900}
   m_Layer: 0
   m_Name: Minion
   m_TagString: Untagged
@@ -194,43 +194,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!114 &7484316309201671870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6177842625692767362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f6c617b683a5e049b577ba402a5657d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BearMinionChase
-  moveSpeed: 3
-  contactDamage: 1
-  contactCooldown: 1
-  knockbackForce: 6
---- !u!114 &8245959989768094105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6177842625692767362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffbd1bfcf46ae8843a84c6861ddc2191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BearMinionHealth
-  maxHealth: 6
-  flashTime: 0.1
-  hitColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  hitSounds:
-  - {fileID: 8300000, guid: 5e61874a890fd754ab4f53c472353b1f, type: 3}
-  - {fileID: 8300000, guid: c2f1fd389b221f345a9193b6198b6752, type: 3}
-  - {fileID: 8300000, guid: d49926870a4c1de4a829ec96513a6367, type: 3}
-  - {fileID: 8300000, guid: dc22a280864cd1c43890f4cb82e868a5, type: 3}
-  deathSound: {fileID: 8300000, guid: d9b4ed2766f77a24ba1f73fc1e5049ba, type: 3}
 --- !u!95 &4172954189405405670
 Animator:
   serializedVersion: 7
@@ -365,3 +328,53 @@ MonoBehaviour:
   sortPoint: {fileID: 9036424937706028992}
   offset: 0
   multiplier: 100
+--- !u!114 &2268994246744828953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177842625692767362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7916bd80e2e4ec04dace9dd8dfa2b0a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoarChase
+  baseSpeed: 3
+  spawnChargeDelay: 0.3
+  chargeSpeed: 0
+  windupTime: 0.6
+  chargeTime: 0.6
+  recoveryTime: 0.5
+  minChargeInterval: 3
+  maxChargeInterval: 5
+  separationRadius: 1.2
+  separationStrength: 1.5
+  freezeColor: {r: 0.6, g: 0.85, b: 1, a: 1}
+  chargeColor: {r: 1, g: 1, b: 1, a: 1}
+  frozen: 0
+  chargeSounds: []
+--- !u!114 &990900059223543900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177842625692767362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdfaaaa87a37cc54e91232d16960d8d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoarHealth
+  maxHealth: 6
+  knockbackForce: 6
+  flashTime: 0.1
+  meatPickupPrefab: {fileID: 0}
+  meatSprites: []
+  hitSounds:
+  - {fileID: 8300000, guid: 5e61874a890fd754ab4f53c472353b1f, type: 3}
+  - {fileID: 8300000, guid: c2f1fd389b221f345a9193b6198b6752, type: 3}
+  - {fileID: 8300000, guid: d49926870a4c1de4a829ec96513a6367, type: 3}
+  - {fileID: 8300000, guid: dc22a280864cd1c43890f4cb82e868a5, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: d9b4ed2766f77a24ba1f73fc1e5049ba, type: 3}
