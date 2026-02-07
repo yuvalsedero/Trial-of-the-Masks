@@ -138,11 +138,12 @@ MonoBehaviour:
   speed: 12
   lifetime: 2
   momentumFactor: 0.5
-  ricochetSearchRadius: 8
+  ricochetSearchRadius: 6
   hitFlashPrefab: {fileID: 1569960466309099742, guid: 9eb9bc8350f08f94085c4fee07a3ce21, type: 3}
+  fireHitFXPrefab: {fileID: 0}
   iceColor: {r: 0.6, g: 0.85, b: 1, a: 1}
   poisonColor: {r: 0.3, g: 0.9, b: 0.3, a: 1}
-  fireColor: {r: 1, g: 0.4, b: 0.1, a: 1}
+  fireColor: {r: 0.94716984, g: 0, b: 0, a: 1}
 --- !u!60 &2198990907693313455
 PolygonCollider2D:
   m_ObjectHideFlags: 0

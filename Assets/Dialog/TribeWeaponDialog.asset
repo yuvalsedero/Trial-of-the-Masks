@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TribeWeaponDialog
   m_EditorClassIdentifier: Assembly-CSharp::TribeDialogData
   tribeType: 1
-  meatCost: 12
+  meatCost: 0
   genericLines:
   - So the rumor was true..
   - The great hunting powers don't come easily,

@@ -12,7 +12,7 @@ public class Dart : MonoBehaviour
     public float ricochetSearchRadius = 6f;
 
     [Header("Hit Flash FX")]
-    public GameObject hitFlashPrefab;
+    public GameObject hitFlashPrefab; // For ice/poison legacy FX
 
     public Color iceColor = new Color(0.6f, 0.85f, 1f);
     public Color poisonColor = new Color(0.3f, 0.9f, 0.3f);
@@ -23,28 +23,24 @@ public class Dart : MonoBehaviour
     bool piercing;
 
     IDamageable lastHitEnemy;
+
     public void InitFromMask()
     {
         dartEffect = MaskManager.Instance.ElementalEffect;
-
         piercing = dartEffect == MaskEffectType.Piercing;
         remainingBounces = dartEffect == MaskEffectType.Ricochet ? 1 : 0;
     }
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // 🔑 SNAPSHOT MASK STATE HERE
-        // dartEffect = MaskManager.Instance.ElementalEffect;
         dartEffect = MaskManager.Instance.DartEffect;
-
         piercing = dartEffect == MaskEffectType.Piercing;
         remainingBounces = dartEffect == MaskEffectType.Ricochet ? 1 : 0;
 
         Destroy(gameObject, lifetime);
     }
-
-
 
     public void Fire(Vector2 shootDir, Vector2 inheritedVelocity)
     {
@@ -58,7 +54,6 @@ public class Dart : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"DartEffect at hit = {dartEffect}");
         if (other.CompareTag("Projectile"))
             return;
 
@@ -76,14 +71,14 @@ public class Dart : MonoBehaviour
         lastHitEnemy = enemy;
 
         enemy.TakeDamage(damage, rb.linearVelocity);
-SpawnHitFlash(other);
+        SpawnHitFlash(other);
 
-if (dartEffect == MaskEffectType.Ice)
-{
-    enemy.GetTransform()
-         .GetComponent<EnemyStatus>()
-         ?.ApplyIceSlow(0f, 0f); // 👈 THIS NUMBER
-}
+        if (dartEffect == MaskEffectType.Ice)
+        {
+            enemy.GetTransform()
+                 .GetComponent<EnemyStatus>()
+                 ?.ApplyIceSlow(0f, 0f);
+        }
 
         if (piercing)
             return;
@@ -107,39 +102,38 @@ if (dartEffect == MaskEffectType.Ice)
         Destroy(gameObject);
     }
 
-    void SpawnHitFlash(Collider2D hitCollider)
+  void SpawnHitFlash(Collider2D hitCollider)
+{
+    Vector3 hitPos = hitCollider.bounds.center;
+    float scale = GetColliderSize(hitCollider);
+
+    if (DartFXManager.Instance != null)
     {
-        if (hitFlashPrefab == null)
-            return;
-
-        GameObject fx = Instantiate(hitFlashPrefab, transform.position, Quaternion.identity);
-
+        DartFXManager.Instance.SpawnFX(hitPos, dartEffect, scale);
+    }
+    else if (hitFlashPrefab != null)
+    {
+        // Legacy fallback
+        GameObject fx = Instantiate(hitFlashPrefab, hitPos, Quaternion.identity);
         HitFlashFX fxComp = fx.GetComponent<HitFlashFX>();
-        if (fxComp == null)
-            return;
-
-        float scale = 0.15f;
-        Color color = Color.white;
-
-        switch (dartEffect)
+        if (fxComp != null)
         {
-            case MaskEffectType.Ice:
-                color = iceColor;
-                break;
-
-            case MaskEffectType.Poison:
-                color = poisonColor;
-                break;
-
-            case MaskEffectType.Fire:
-                color = fireColor;
-                scale = GetColliderSize(hitCollider);
-                break;
+            Color color = dartEffect switch
+            {
+                MaskEffectType.Ice => iceColor,
+                MaskEffectType.Poison => poisonColor,
+                MaskEffectType.Fire => fireColor,
+                _ => Color.white
+            };
+            fx.transform.localScale = Vector3.one * scale;
+            fxComp.Play(color);
         }
 
-        fx.transform.localScale = Vector3.one * scale;
-        fxComp.Play(color); // 🔑 THIS is the key
+        if (fx.GetComponent<FXSelfDestruct>() == null)
+            fx.AddComponent<FXSelfDestruct>();
     }
+}
+
 
 
     float GetColliderSize(Collider2D col)

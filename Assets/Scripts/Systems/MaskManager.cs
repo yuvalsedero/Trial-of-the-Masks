@@ -23,11 +23,12 @@ public class MaskManager : MonoBehaviour
         Debug.Log("MaskManager awake");
     }
 
-    public void SetElemental(MaskEffectType effect)
-    {
-        ElementalEffect = effect;
-        Debug.Log("ELEMENTAL SET TO: " + effect);
-    }
+public void SetElemental(MaskEffectType effect)
+{
+    ElementalEffect = effect;
+    DartEffect = effect; // 🔑 SYNC
+    Debug.Log("ELEMENTAL + DART SET TO: " + effect);
+}
 
     public void SetDart(MaskEffectType effect)
     {

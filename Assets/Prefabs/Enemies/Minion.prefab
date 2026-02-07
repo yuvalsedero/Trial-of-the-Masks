@@ -341,8 +341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoarChase
   baseSpeed: 3
-  spawnChargeDelay: 0.3
-  chargeSpeed: 0
+  spawnChargeDelay: 0.1
+  chargeSpeed: 0.1
   windupTime: 0.6
   chargeTime: 0.6
   recoveryTime: 0.5
@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdfaaaa87a37cc54e91232d16960d8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoarHealth
-  maxHealth: 6
+  maxHealth: 5
   knockbackForce: 6
   flashTime: 0.1
   meatPickupPrefab: {fileID: 0}
