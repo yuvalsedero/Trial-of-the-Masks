@@ -3224,8 +3224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DartFXManager
   fireFXPrefab: {fileID: 3637952100863987945, guid: f5ee88bfa053a924da344ea06f13c21c, type: 3}
-  iceFXPrefab: {fileID: 0}
-  poisonFXPrefab: {fileID: 0}
+  iceFXPrefab: {fileID: 3637952100863987945, guid: 25614c876388b414896c4f7c6865844e, type: 3}
+  poisonFXPrefab: {fileID: 3637952100863987945, guid: aaa1e49c60f814f4ab31ced0e1f876c6, type: 3}
 --- !u!1 &1706698038
 GameObject:
   m_ObjectHideFlags: 0

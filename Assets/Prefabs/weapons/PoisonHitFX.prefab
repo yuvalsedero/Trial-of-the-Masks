@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2910325461313762780}
   - component: {fileID: 7233443528754123914}
   m_Layer: 0
-  m_Name: FireHitFX
+  m_Name: PoisonHitFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ Animator:
   m_GameObject: {fileID: 3637952100863987945}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d298e681a5f05c743b2da59385dcf8d4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 85a91879af32e634684ccf265ddb6965, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

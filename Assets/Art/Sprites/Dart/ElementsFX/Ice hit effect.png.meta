@@ -151,12 +151,12 @@ TextureImporter:
       name: Ice hit effect_0
       rect:
         serializedVersion: 2
-        x: 624
-        y: 1100
-        width: 36
-        height: 38
+        x: 625
+        y: 1102
+        width: 33
+        height: 35
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -173,12 +173,12 @@ TextureImporter:
       name: Ice hit effect_1
       rect:
         serializedVersion: 2
-        x: 722
-        y: 1098
-        width: 27
-        height: 34
+        x: 723
+        y: 1099
+        width: 25
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -195,12 +195,12 @@ TextureImporter:
       name: Ice hit effect_2
       rect:
         serializedVersion: 2
-        x: 948
-        y: 1110
-        width: 62
-        height: 77
+        x: 950
+        y: 1111
+        width: 59
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -217,12 +217,12 @@ TextureImporter:
       name: Ice hit effect_3
       rect:
         serializedVersion: 2
-        x: 1044
-        y: 1094
-        width: 52
-        height: 54
+        x: 1046
+        y: 1095
+        width: 49
+        height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -236,81 +236,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice hit effect_4
-      rect:
-        serializedVersion: 2
-        x: 1226
-        y: 875
-        width: 292
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8fbd1d16f39c2db50800000000000000
-      internalID: 6616572076621945848
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ice hit effect_5
-      rect:
-        serializedVersion: 2
-        x: 195
-        y: 989
-        width: 92
-        height: 95
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 39446fbe492836250800000000000000
-      internalID: 5936732309930001555
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ice hit effect_6
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 975
-        width: 107
-        height: 127
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e77804d014afef970800000000000000
-      internalID: 8790738679975937918
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Ice hit effect_7
       rect:
         serializedVersion: 2
-        x: 624
-        y: 963
-        width: 131
-        height: 134
+        x: 626
+        y: 964
+        width: 128
+        height: 131
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -327,12 +261,12 @@ TextureImporter:
       name: Ice hit effect_8
       rect:
         serializedVersion: 2
-        x: 758
-        y: 1035
-        width: 47
-        height: 29
+        x: 759
+        y: 1038
+        width: 45
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -349,12 +283,12 @@ TextureImporter:
       name: Ice hit effect_9
       rect:
         serializedVersion: 2
-        x: 865
-        y: 1020
-        width: 70
-        height: 56
+        x: 867
+        y: 1022
+        width: 66
+        height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -371,12 +305,12 @@ TextureImporter:
       name: Ice hit effect_10
       rect:
         serializedVersion: 2
-        x: 934
-        y: 961
-        width: 152
-        height: 147
+        x: 935
+        y: 962
+        width: 150
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -393,12 +327,12 @@ TextureImporter:
       name: Ice hit effect_11
       rect:
         serializedVersion: 2
-        x: 1091
-        y: 1002
-        width: 64
-        height: 54
+        x: 1093
+        y: 1003
+        width: 61
+        height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -415,12 +349,12 @@ TextureImporter:
       name: Ice hit effect_12
       rect:
         serializedVersion: 2
-        x: 583
-        y: 1003
-        width: 42
-        height: 29
+        x: 585
+        y: 1005
+        width: 38
+        height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -437,12 +371,12 @@ TextureImporter:
       name: Ice hit effect_13
       rect:
         serializedVersion: 2
-        x: 653
-        y: 905
-        width: 28
-        height: 45
+        x: 654
+        y: 906
+        width: 26
+        height: 43
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -459,12 +393,12 @@ TextureImporter:
       name: Ice hit effect_14
       rect:
         serializedVersion: 2
-        x: 741
-        y: 943
-        width: 41
-        height: 33
+        x: 742
+        y: 945
+        width: 39
+        height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -481,12 +415,12 @@ TextureImporter:
       name: Ice hit effect_15
       rect:
         serializedVersion: 2
-        x: 927
-        y: 906
-        width: 57
-        height: 62
+        x: 928
+        y: 907
+        width: 54
+        height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -503,12 +437,12 @@ TextureImporter:
       name: Ice hit effect_16
       rect:
         serializedVersion: 2
-        x: 1025
-        y: 905
-        width: 58
-        height: 62
+        x: 1026
+        y: 906
+        width: 56
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -521,11 +455,165 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Ice 5
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 876
+        width: 290
+        height: 311
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbffe267729140740aba3cb3dc3ef079
+      internalID: -1084303435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice hit 1
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 990
+        width: 89
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 929ea88dc011e9a4ba70212a692b05a6
+      internalID: 851162240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice hit 2
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 977
+        width: 104
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cb7c601229987641a21a8267ec59b9b
+      internalID: -1827686939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice 4
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 872
+        width: 317
+        height: 335
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb872487d2b27164a9b6e9911117bbc8
+      internalID: -809119903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice 3
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 884
+        width: 280
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8f401022d838d744b969bbf8a2cc223
+      internalID: 1632798588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice 1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 879
+        width: 234
+        height: 326
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee90ccade7557e74cb61f7eb5890851b
+      internalID: 1632328161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice 2
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 882
+        width: 238
+        height: 331
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dea4dcb8f696494992526657e04b13a
+      internalID: -1240341652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ce586ee84e4198e42a7a8f8b6c2e88ca
     internalID: 0
     vertices: []
     indices: 
@@ -533,8 +621,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
+      Ice 1: 1632328161
+      Ice 2: -1240341652
+      Ice 3: 1632798588
+      Ice 4: -809119903
+      Ice 5: -1084303435
+      Ice hit 1: 851162240
+      Ice hit 2: -1827686939
       Ice hit effect_0: -6615425380815052557
       Ice hit effect_1: 1088185733036052952
       Ice hit effect_10: 6433524639741606936
@@ -546,9 +643,6 @@ TextureImporter:
       Ice hit effect_16: 5193280577916128860
       Ice hit effect_2: 4074176591413928280
       Ice hit effect_3: -7138695793647150028
-      Ice hit effect_4: 6616572076621945848
-      Ice hit effect_5: 5936732309930001555
-      Ice hit effect_6: 8790738679975937918
       Ice hit effect_7: 6583312278411350524
       Ice hit effect_8: -8112240847551313304
       Ice hit effect_9: 4278305612357603684
